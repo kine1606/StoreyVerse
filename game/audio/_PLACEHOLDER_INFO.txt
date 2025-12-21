@@ -1,0 +1,37 @@
+AUDIO FILES NEEDED:
+
+Sound Effects (.ogg format recommended):
+1. chant.ogg - Âm thanh niệm chú
+2. candle_out.ogg - Nến tắt
+3. pain.ogg - Tiếng đau đớn
+4. whisper.ogg - Lời thì thầm
+5. countdown.ogg - Đồng hồ đếm ngược
+6. book_fall.ogg - Sách rơi
+7. item_get.ogg - Nhận vật phẩm
+8. dark_consume.ogg - Bị nuốt bởi bóng tối
+9. rumble.ogg - Rung chuyển
+10. evil_laugh.ogg - Tiếng cười ma quái
+11. grab.ogg - Chộp lấy vật
+12. revelation.ogg - Giác ngộ
+13. acid_burn.ogg - Tiếng axit ăn da
+14. timer_end.ogg - Hết giờ
+15. gas.ogg - Khí gas phun ra
+16. mirror_accept.ogg - Gương chấp nhận
+17. gamemaster_voice.ogg - Giọng Quản Trò
+18. paper_write.ogg - Viết giấy
+19. ballot_open.ogg - Hòm phiếu mở
+20. scream.ogg - Tiếng thét
+21. fire_burn.ogg - Lửa cháy
+22. explosion.ogg - Nổ
+23. darkness.ogg - Bóng tối
+
+Music Tracks (.ogg format):
+1. tension.ogg - Nhạc căng thẳng
+2. boss_theme.ogg - Nhạc đối đầu boss
+3. sad_theme.ogg - Nhạc buồn
+4. melancholic.ogg - Nhạc u sầu
+5. peaceful.ogg - Nhạc yên bình
+
+PLACEHOLDER:
+Game will still run without audio files, but effects will be missing.
+You can add audio files later by placing them in the 'audio' folder.

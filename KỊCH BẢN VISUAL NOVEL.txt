@@ -1,0 +1,117 @@
+﻿KỊCH BẢN VISUAL NOVEL: SỰ PHẢN BỘI (FINAL VERSION)
+I. THÔNG TIN CHUNG
+* LOGLINE: Bốn người bạn bị cuốn vào một trò chơi tâm lý của một thực thể tà ác. Lối thoát duy nhất đòi hỏi sự tin tưởng tuyệt đối, nhưng mọi quy tắc và bằng chứng đều được sắp đặt để buộc họ phải tự tay hiến tế một người bạn .
+* NHÂN VẬT:
+o MINH (NVC): Trưởng nhóm, người chơi điều khiển. Cố gắng giữ lý trí .
+o LAN: Thông minh, logic, tin vào bằng chứng .
+o TUẤN: Thực tế, nóng nảy, muốn bảo vệ Mai nhưng dễ sợ hãi .
+o MAI: Nhạy cảm, hay lo lắng, mục tiêu của sự nghi ngờ .
+
+II. KỊCH BẢN CHI TIẾT
+CẢNH 1: LỜI MỜI GỌI
+BỐI CẢNH: Phòng sinh hoạt CLB Tâm linh. 11 giờ đêm. Ánh nến leo lét .
+(Bắt đầu) TUẤN: (Ngả người ra sau ghế) Tớ vẫn không tin được là chúng ta đang làm chuyện này. Nhỡ có con gì hiện ra thật thì sao? LAN: (Chỉnh kính) Thống kê cho thấy 99% các nghi thức gọi hồn chỉ là ảo giác nhóm. Cứ xem như trải nghiệm tâm lý đi. MAI: (Run rẩy) Nhưng... từ lúc vào đây tớ đã thấy lạnh sống lưng rồi. MINH: Thôi nào. Chỉ là đọc vài câu cho vui thôi. Để tớ đọc câu cuối cùng nhé.
+(Hành động) Minh đọc câu niệm chú. Nến tắt phụt. Một cơn đau buốt nhói lên trong đầu cả bốn người . Những lời thì thầm vang lên riêng biệt:
+* (Minh nghe): "Trong số các ngươi, có một kẻ đã bị chiếm xác."
+* (Lan nghe): "Đừng tin ai cả. Một người trong nhóm không còn là chính mình nữa."
+* (Tuấn nghe): "Là Mai. Nó đang giả vờ yếu đuối. Hãy cẩn thận."
+* (Mai nghe): "Bọn họ đang nghi ngờ ngươi. Ngươi sẽ bị bỏ lại."
+Cánh cửa biến mất, thay bằng cổng sắt rỉ máu: "TRÒ CHƠI BẮT ĐẦU. TÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT."
+
+CẢNH 2: MÊ CUNG MANH MỐI (CÓ DEAD END & LOGIC MỚI)
+BỐI CẢNH: Hành lang trường học cũ nát, ẩm mốc .
+LAN: Chúng ta cần thông tin. Nếu có kẻ mạo danh, phải có manh mối. TUẤN: Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế.
+LỰA CHỌN CỦA MINH:
+* Lựa chọn A (Nguy hiểm): "Được. Chia ra hành động." (Dẫn đến Nhánh A)
+* Lựa chọn B (An toàn): "Không! Đi cùng nhau." (Dẫn đến Nhánh B)
+NHÁNH A: CHIA NHÓM (THƯ VIỆN)
+Minh và Lan tìm thấy trang nhật ký tố cáo Mai đang "diễn kịch" . Lan sợ hãi giục Minh rời đi .
+LỰA CHỌN TÌM KIẾM (MINH):
+* A1 (Tin ngay): Rời đi ngay. (Minh bỏ lỡ manh mối quan trọng) .
+* A2 (Nghi ngờ): Kiểm tra kỹ hơn. Minh tìm thấy mảnh giấy ẩn: "MỌI BẰNG CHỨNG ĐỀU LÀ GIẢ. TIN TƯỞNG NHAU LÀ LỐI THOÁT DUY NHẤT." (Key Item cho True Ending) .
+(Sự kiện mới: Bẫy Dead End) Chuẩn bị rời đi, một cuốn sách phát sáng màu tím hiện ra mời gọi. LỰA CHỌN SỐNG CÒN:
+* S1 (Tham lam): "Đợi đã, cuốn sách kia phát sáng!" -> Minh chạm vào, sách hóa thành khói đen nuốt chửng anh.
+o -> BAD END 1: KẺ LẠC LỐI (GAME OVER).
+* S2 (Cẩn trọng): "Đi thôi, tớ có cảm giác không lành." -> Cả hai thoát an toàn.
+NHÁNH B: ĐI CHUNG (PHÒNG LƯU TRỮ - LOGIC MỚI)
+BỐI CẢNH: Phòng Lưu Trữ CLB. Cả nhóm đang hoảng loạn vì căn phòng rung chuyển, trần nhà bắt đầu nứt ra. Hồn ma tay sai cười man rợ rồi biến mất. Trên bàn làm việc lộn xộn, có hai tài liệu nổi bật nhất. Minh chỉ có thể cầm MỘT thứ trước khi chạy ra cửa.
+1. CUỐN NHẬT KÝ BÌA ĐỎ (BẪY CẢM XÚC):
+* Vẻ ngoài: Bìa da đỏ như máu, đang mở sẵn ở trang cuối. Nét chữ viết nguệch ngoạc đầy thù hận: "Đừng tin tụi nó! Tụi nó muốn mày chết!".
+* Sức hút: Đánh vào sự tò mò và nỗi sợ hãi tức thì của người chơi.
+2. TẬP GIẤY GHI CHÚ CŨ NÁT (MANH MỐI SỰ THẬT):
+* Vẻ ngoài: Một xấp giấy nháp ố vàng, ghi chép chi chít các công thức dịch thuật khô khan, tiêu đề: "Phân tích Luật triệu hồi". Trông rất nhàm chán.
+* Sức hút: Thấp, trông giống tài liệu học tập vô dụng.
+LỰA CHỌN QUYẾT ĐỊNH (CÓ TÍNH GIỚI HẠN THỜI GIAN):
+* Lựa chọn B1: Chộp lấy cuốn Nhật Ký Bìa Đỏ.
+o HỆ QUẢ: Minh đọc được những dòng hoang tưởng của nạn nhân trước: "Thằng bạn thân nhất đã đâm sau lưng tao... Đừng tin ai...". Điều này chỉ "đổ thêm dầu vào lửa", khiến Minh càng nghi ngờ Tuấn và Lan ở các cảnh sau. (Mất cơ hội True End).
+* Lựa chọn B2: Giật lấy Tập Giấy Ghi Chú.
+o HỆ QUẢ: Minh mang nó theo. Khi ra ngoài an toàn, anh đọc lướt qua.
+o NỘI DUNG: Đây là bản dịch luật chơi gốc mà Quản Trò đã cố tình giấu. Dòng được khoanh đỏ ghi:
+"Quy tắc thứ 13: Quản Trò không phải là trọng tài. Quản Trò là một 'Người Chơi' ở vị thế quan sát. Hắn sống bằng nỗi sợ. Nếu các 'Vật Hiến Tế' từ chối giết nhau (Giấy Trắng), Quản Trò sẽ vi phạm Giao Kèo và buộc phải hiện nguyên hình. ĐÓ LÀ LÚC HẮN CÓ THỂ BỊ GIẾT."
+o TÁC DỤNG: Minh hiểu ra rằng sự đoàn kết không chỉ là tha thứ, mà là vũ khí duy nhất để lôi con quỷ ra và tiêu diệt nó. (Mở khóa True End).
+
+CẢNH 3: PHÒNG HÓA HỌC & SỰ HY SINH (MỚI)
+BỐI CẢNH: Cánh cửa duy nhất mở là "Phòng Hóa Học". Bên trong nồng nặc mùi axit. Một chiếc hộp kính chứa dung dịch sủi bọt và rết độc. Chìa khóa vàng nằm dưới đáy. Đồng hồ đếm ngược: 00:60s.
+QUẢN TRÒ: "Chọn vật hiến tế để lấy chìa khóa. Hết giờ, phòng sẽ bơm khí độc."
+DIỄN BIẾN: Cả nhóm hoảng loạn. Tuấn từ chối làm. Lan run rẩy. Thời gian sắp hết.
+LỰA CHỌN QUYẾT ĐỊNH (MINH):
+* Lựa chọn A (Chần chừ): "Không! Tớ không thể ép ai cả! Tìm cách khác đi!"
+o Đồng hồ về 0. Cửa khóa chặt. Khí gas phun ra. Cả nhóm chết ngạt.
+o -> BAD END 2: CĂN PHÒNG HƠI NGẠT (GAME OVER).
+* Lựa chọn B (Chỉ định TUẤN/LAN):
+o Người bị chỉ định buộc phải thò tay vào axit. Họ lấy được chìa khóa nhưng bị bỏng nặng và bắt đầu thù hận Minh.
+* Lựa chọn C (Tự làm):
+o Minh tự thò tay vào. Bàn tay bị thương nặng. Tăng uy tín, nhưng Mai thấy tội lỗi.
+
+CẢNH 4: HÀNH LANG SỰ THẬT (MỚI)
+BỐI CẢNH: Hành lang đầy gương. Hình ảnh phản chiếu đứng yên cười quỷ dị. QUẢN TRÒ: "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất. Nói dối gương sẽ vỡ."
+DIỄN BIẾN:
+1. TUẤN: Thú nhận đã hãm hại Lan mất học bổng năm ngoái vì ghen tị.
+2. MAI: Thú nhận chỉ lợi dụng Tuấn để được bảo vệ chứ không hề thích cậu ta.
+3. LAN: Thú nhận coi cả nhóm là vật thí nghiệm, khinh thường trí tuệ của mọi người.
+4. MINH: Phải lựa chọn thú nhận sự Hèn nhát (muốn bỏ nhóm) hoặc Đố kỵ (ghen tị với bạn bè).
+
+CẢNH 5: CĂN PHÒNG BỎ PHIẾU
+BỐI CẢNH: Phòng trắng toát. Hòm phiếu ở giữa .
+QUẢN TRÒ: "Viết tên kẻ phản bội. 4 phiếu TRẮNG: Tất cả thắng. Có tên: Người nhiều phiếu nhất sẽ chết, 3 người kia về."
+DIỄN BIẾN: Tuấn và Lan (với vết thương tâm lý từ Cảnh 4) đòi giết Mai để bảo toàn tính mạng .
+LỰA CHỌN QUYẾT ĐỊNH (MINH):
+* Lựa chọn A (Phản Bội): Đồng ý viết tên Mai.
+o -> Dẫn đến KẾT THÚC A (Giọt Mực Đen).
+* Lựa chọn B (Cố gắng Tin Tưởng): Nộp giấy trắng và thuyết phục mọi người .
+o Thuyết phục thất bại: -> Dẫn đến KẾT THÚC B hoặc C.
+o Thuyết phục thành công: Cả 4 nộp giấy trắng. -> Dẫn đến CẢNH 6.
+
+CẢNH 6: ĐỐI MẶT ÁC QUỶ (TRUE ENDING ROUTE)
+BỐI CẢNH: Hòm phiếu mở ra: 4 tờ giấy trắng . Nhưng thay vì thắng, căn phòng rung chuyển. Máu chảy từ trần nhà.
+QUẢN TRÒ: (Gầm lên) "Lũ ngu ngốc! Giấy trắng nghĩa là không tìm ra ai. TẤT CẢ PHẠM LUẬT! CHẾT ĐI!"
+HÀNH ĐỘNG (KIỂM TRA MANH MỐI): Minh cần Key Item từ Cảnh 2 (Mảnh giấy "Bằng chứng giả" hoặc "Danh sách thành viên").
+* TRƯỜNG HỢP 1: KHÔNG CÓ MANH MỐI (Do chọn sai ở Cảnh 2):
+o Minh cứng họng. Bóng tối nuốt chửng cả nhóm. -> BAD END (SỰ HỖN LOẠN).
+* TRƯỜNG HỢP 2: CÓ MANH MỐI (TRUE END):
+o TH 2.1 CÓ MANH MỐI QUAN TRỌNG KHI ĐI RIÊNG :
+* MINH: (Hét lớn) "KHOAN! Trong chúng ta không ai là kẻ mạo danh cả vậy thì suy ra chỉ có 1 đáp án đó LÀ NGƯƠI QUẢN TRÒ!"
+* Minh giơ bằng chứng ra (Tờ giấy).
+* MINH: "Ngươi là Quản Trò, cũng là người chơi thứ 5! Ngươi mới là Kẻ Mạo Danh!"
+* Minh viết chữ "QUẢN TRÒ" ném vào hòm phiếu.
+o TH 2.2 CÓ MANH MỐI QUAN TRỌNG KHI ĐI CHUNG
+* BỐI CẢNH: 4 tờ giấy trắng được nộp. Quản Trò gầm lên đòi giết tất cả.
+* HÀNH ĐỘNG CỦA MINH (NẾU CÓ TẬP GIẤY GHI CHÚ):
+* MINH: (Cười khẩy, giơ tập giấy cũ nát ra) "Mày định dọa ai? Tao đã đọc bản dịch gốc của nghi thức này rồi!"
+* QUẢN TRÒ: (Khựng lại, giọng rít lên) "Cái gì...?"
+* MINH: "Mày nói bọn tao phạm luật? Sai rồi. Luật chơi nói: 'Kẻ thua cuộc phải chết'. Nhưng khi cả 4 tờ giấy đều trắng, không có ai thua cuộc cả."
+* LAN: (Hiểu ý ngay, tiếp lời) "Nếu không có người chơi nào thua, thì kẻ duy nhất thất bại trong việc duy trì trò chơi... là MÀY - Quản Trò!"
+* MINH: "Quy tắc thứ 13: Khi Quản Trò thất bại, hắn sẽ mất quyền năng bảo hộ và trở thành thực thể vật lý. Mày không phải thần thánh. Mày chỉ là một con ký sinh trùng đói khát thôi!"
+* TUẤN: "Và giờ bọn tao sẽ nghiền nát mày!"
+* (Minh viết tên "QUẢN TRÒ" vào phiếu và ném vào hòm. Hòm phiếu bốc cháy, thiêu đốt con quỷ).
+
+III. CÁC KẾT THÚC (ENDINGS)
+1. BAD END 1: KẺ LẠC LỐI (Chết lẻ ở thư viện Cảnh 2).
+2. BAD END 2: CĂN PHÒNG HƠI NGẠT (Chết cả nhóm vì do dự ở Cảnh 3).
+3. NORMAL END A: GIỌT MỰC ĐEN (Minh hùa theo giết Mai ở Cảnh 5) . Nhóm sống sót nhưng dằn vặt.
+4. NORMAL END B: RẠN NỨT (Minh nộp giấy trắng nhưng thuyết phục thất bại). Mai chết (do bị Lan/Tuấn giết), tình bạn tan vỡ .
+5. NORMAL END C: BÀN TAY NHÚNG CHÀM (Minh chủ động giết Tuấn/Lan để tự vệ) .
+6. TRUE ENDING: BÌNH MINH (Chiến thắng ở Cảnh 6).
+o Quỷ dữ bị tiêu diệt. Cả nhóm tỉnh lại trong phòng CLB lúc 11:05 đêm.
+o Họ chấp nhận những bí mật xấu xí của nhau (đã lộ ở Cảnh 4) và chọn tha thứ.
+
