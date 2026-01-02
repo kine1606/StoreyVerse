@@ -6,6 +6,9 @@
 # ============================================
 
 init python:
+    # Debug mode for displaying psychological variables
+    debug_mode = False  # Set to True to see variables on screen
+    
     # Game state variables
     class GameState:
         def __init__(self):
@@ -20,7 +23,57 @@ init python:
             self.mai_confession = ""
             self.lan_confession = ""
             self.minh_confession = ""
+            
+            # === PSYCHOLOGICAL VARIABLES (HIDDEN) ===
+            # These variables affect the game's outcome but are not displayed to the player
+            # They create a more realistic psychological experience
+            
+            # TRUST: Niềm tin của nhóm dành cho Minh (0-10)
+            # Increases when: Minh makes selfless choices, stays with group
+            # Decreases when: Minh abandons friends, trusts fake evidence too quickly
+            # Used in: Scene 5 persuasion checks
+            self.trust = 5  # Start neutral
+            
+            # GUILT: Tội lỗi tích tụ giữa các nhân vật (0-10)
+            # Increases when: Someone is hurt protecting others (Mai feels guilty)
+            # Used in: Character relationships and emotional impact
+            self.guilt = 0  # Start with no guilt
+            
+            # AUTHORITY: Quyền đạo đức của Minh trong phòng bỏ phiếu (0-10)
+            # Increases when: Minh tells truth in confessions
+            # Decreases when: Minh forces others to sacrifice, reads emotional bait
+            # Used in: Scene 5 persuasion checks - determines if group listens to Minh
+            self.authority = 5  # Start neutral
+    
     game_state = GameState()
+
+# ============================================
+# DEBUG SCREEN (Press 'D' to toggle)
+# ============================================
+
+screen debug_stats():
+    if debug_mode:
+        frame:
+            xalign 0.02
+            yalign 0.02
+            xsize 300
+            ysize 200
+            background "#000000aa"
+            
+            vbox:
+                spacing 5
+                text "=== DEBUG MODE ===" color "#ffff00" size 18
+                text "TRUST: [game_state.trust]/10" color "#00ff00"
+                text "GUILT: [game_state.guilt]/10" color "#ff8800"
+                text "AUTHORITY: [game_state.authority]/10" color "#00aaff"
+                text "GROUP TRUST: [game_state.group_trust_level]" color "#ffffff" size 14
+                null height 10
+                text "Press 'D' to hide" color "#888888" size 12
+
+# Key to toggle debug mode
+screen debug_toggle():
+    key "d" action ToggleVariable("debug_mode")
+    key "D" action ToggleVariable("debug_mode")
 
 # ============================================
 # SCENE 1: THE INVITATION (LỜI MỜI GỌI)
@@ -29,6 +82,10 @@ init python:
 label start:
     # Initialize game state
     $ game_state = GameState()
+    
+    # Show debug screens
+    show screen debug_stats
+    show screen debug_toggle
     
     scene bg club night
     with fade
@@ -42,19 +99,35 @@ label start:
     "Bốn người bạn ngồi quay quanh một tấm bảng Ouija cũ kỹ."
     
     # TUẤN speaks
+    show sora at left
+    with dissolve
     "TUẤN" "Tớ vẫn không tin được là chúng ta đang làm chuyện này. Nhỡ có con gì hiện ra thật thì sao?"
     
     # LAN speaks
+    show chie at right
+    with dissolve
     "LAN" "Thống kê cho thấy 99%% các nghi thức gọi hồn chỉ là ảo giác nhóm. Cứ xem như trải nghiệm tâm lý đi."
     
     # MAI speaks
+    hide sora
+    with dissolve
+    show nora at left
+    with dissolve
     "MAI" "Nhưng... từ lúc vào đây tớ đã thấy lạnh sống lưng rồi."
     
     # MINH speaks
+    hide chie
+    hide nora
+    with dissolve
+    show aoto at center
+    with dissolve
     "MINH" "Thôi nào. Chỉ là đọc vài câu cho vui thôi. Để tớ đọc câu cuối cùng nhé."
     
     play sound "audio/chant.ogg"
     "Minh đọc câu niệm chú cuối cùng..."
+    
+    hide aoto
+    with dissolve
     
     scene bg black
     with flash
@@ -110,8 +183,12 @@ label scene2_corridor:
     "Căn hành lang ẩm mốc, vách tường bong tróc."
     "Mùi mốc nồng nặc khiến cả nhóm khó thở."
     
+    show chie at right
+    with dissolve
     "LAN" "Chúng ta cần thông tin. Nếu có kẻ mạo danh, phải có manh mối."
     
+    show sora at left
+    with dissolve
     "TUẤN" "Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế."
     
     menu:
@@ -119,10 +196,12 @@ label scene2_corridor:
         
         "Chia nhóm hành động (Nguy hiểm)":
             $ game_state.group_trust_level -= 10
+            # Leaving friends behind reduces trust
             jump scene2_branch_a_library
             
         "Đi cùng nhau (An toàn)":
             $ game_state.group_trust_level += 10
+            # Staying together maintains trust
             jump scene2_branch_b_archive
 
 # ============================================
@@ -133,6 +212,10 @@ label scene2_branch_a_library:
     scene bg library
     with fade
     
+    show aoto at left
+    show chie at right
+    with dissolve
+    
     "Minh và Lan bước vào thư viện tối tăm."
     "Ánh đèn pin rọi lên những giá sách bụi mờ."
     
@@ -140,6 +223,7 @@ label scene2_branch_a_library:
     
     "Một cuốn sách rơi xuống đất, trang giở sẵn."
     
+    show chie frown
     "LAN" "Minh, xem này!"
     
     "Đó là một trang nhật ký viết nguệch ngoạc:"
@@ -156,6 +240,7 @@ label scene2_branch_a_library:
         
         "Tin ngay và rời đi":
             $ game_state.group_trust_level -= 20
+            $ game_state.trust -= 1  # A1: Believing too quickly reduces trust
             "Minh và Lan vội vã rời khỏi thư viện."
             "Họ bỏ lỡ manh mối quan trọng..."
             jump scene2_reunite
@@ -203,6 +288,7 @@ label scene2_branch_a_library:
                     
                 "\"Đi thôi, tớ có cảm giác không lành.\"":
                     $ game_state.group_trust_level += 10
+                    # S2: Being cautious and avoiding trap
                     
                     "MINH" "Không, có gì đó sai sai. Chúng ta đi thôi."
                     
@@ -217,6 +303,12 @@ label scene2_branch_a_library:
 label scene2_branch_b_archive:
     scene bg archive_room
     with fade
+    
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
     
     "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
     "Giá tài liệu xếp chồng lên nhau một cách lộn xộn."
@@ -248,6 +340,7 @@ label scene2_branch_b_archive:
         "Chộp lấy Cuốn Nhật Ký Bìa Đỏ":
             $ game_state.chose_red_diary = True
             $ game_state.group_trust_level -= 15
+            $ game_state.authority -= 1  # B1: Taking emotional bait reduces authority
             
             play sound "audio/grab.ogg"
             
@@ -302,9 +395,22 @@ label scene2_reunite:
     scene bg old_corridor
     with fade
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     "Minh và Lan gặp lại Tuấn và Mai ở hành lang."
     
+    show sora frown
     "TUẤN" "Các cậu tìm được gì không?"
+    
+    # Tuấn is upset about being left behind
+    $ game_state.trust -= 1  # "Mày bỏ tụi tao lại" - reduces trust
+    
+    show sora closed frown
+    "TUẤN" "Mày bỏ tụi tao lại."
     
     if game_state.has_fake_evidence_note:
         "MINH" "Có... nhưng không phải bằng chứng. Là một lời cảnh báo."
@@ -326,6 +432,12 @@ label scene3_chemistry:
     pause 1.5
     hide text
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
     "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
     
@@ -343,10 +455,13 @@ label scene3_chemistry:
     "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Chọn vật hiến tế để lấy chìa khóa.{/size}"
     "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Hết giờ, phòng sẽ bơm khí độc.{/size}"
     
+    show sora frown
     "TUẤN" "Cái quái gì vậy?! Ai dám thò tay vào đống axit đó?!"
     
+    show chie closed frown
     "LAN" "Đ-đừng nhìn tôi! Tôi không làm đâu!"
     
+    show nora frown
     "MAI" "Chúng ta... chúng ta phải làm sao đây?"
     
     "Đồng hồ đếm ngược. 45 giây... 40 giây..."
@@ -356,6 +471,7 @@ label scene3_chemistry:
         
         "\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"":
             $ game_state.group_trust_level -= 30
+            # A: Hesitating leads to death - no variables matter here
             
             "Minh do dự, không thể đưa ra quyết định."
             "Thời gian trôi qua từng giây..."
@@ -382,6 +498,7 @@ label scene3_chemistry:
         "Chỉ định Tuấn làm":
             $ game_state.tuan_injury = True
             $ game_state.group_trust_level -= 20
+            $ game_state.authority -= 2  # B: Assigning someone else reduces authority
             
             "MINH" "Tuấn... cậu là người mạnh nhất. Cậu phải làm việc này."
             
@@ -414,6 +531,7 @@ label scene3_chemistry:
         "Chỉ định Lan làm":
             $ game_state.lan_injury = True
             $ game_state.group_trust_level -= 20
+            $ game_state.authority -= 2  # B: Assigning someone else reduces authority
             
             "MINH" "Lan, cậu có bàn tay khéo léo nhất. Cậu làm được."
             
@@ -445,6 +563,8 @@ label scene3_chemistry:
         "\"Để tớ làm.\"":
             $ game_state.minh_injury = True
             $ game_state.group_trust_level += 30
+            $ game_state.trust += 1  # C: Self-sacrifice increases trust
+            $ game_state.guilt += 1  # Mai feels guilty
             
             "MINH" "Tớ không thể bắt ai làm điều này. Để tớ."
             
@@ -493,21 +613,32 @@ label scene4_truth_hallway:
     pause 1.5
     hide text
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     "Một hành lang dài đầy gương."
     "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
     
     "GIỌNG NÓI QUẢN TRÒ" "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất."
     "GIỌNG NÓI QUẢN TRÒ" "Nói dối, gương sẽ vỡ... và các ngươi sẽ chết."
     
+    show chie frown
     "LAN" "Chúng ta... phải làm sao?"
     
+    show sora closed frown
     "TUẤN" "Không có lựa chọn nào khác."
     
     # TUẤN's confession
     "Tuấn bước lên trước, nhìn vào gương."
     
+    show sora frown at center
+    with move
     "TUẤN" "Tôi... tôi đã hãm hại Lan."
     
+    show chie closed frown
     "LAN" "Cái gì?!"
     
     "TUẤN" "Năm ngoái, tôi đã xóa email thông báo học bổng của cậu."
@@ -520,11 +651,17 @@ label scene4_truth_hallway:
     
     "Gương phát sáng xanh, chấp nhận sự thật."
     
+    show sora at Position(xalign=0.65, yalign=1.0)
+    with move
+    
     # MAI's confession
     "Mai run rẩy bước tới."
     
+    show nora frown at center
+    with move
     "MAI" "Tớ... tớ chỉ lợi dụng Tuấn."
     
+    show sora closed frown
     "TUẤN" "...Mai?"
     
     "MAI" "Tớ không thích cậu. Tớ chỉ giả vờ yếu đuối để cậu bảo vệ tớ."
@@ -536,11 +673,17 @@ label scene4_truth_hallway:
     
     "Gương lại sáng lên."
     
+    show nora at right
+    with move
+    
     # LAN's confession
     "Lan thở dài, bước ra."
     
+    show chie closed frown at center
+    with move
     "LAN" "Tôi coi tất cả các cậu... như vật thí nghiệm."
     
+    show aoto frown
     "MINH" "Lan..."
     
     "LAN" "Tôi nghiên cứu hành vi của các cậu. Tôi khinh thường trí tuệ của mọi người."
@@ -549,6 +692,9 @@ label scene4_truth_hallway:
     $ game_state.lan_confession = "looked down on everyone"
     
     play sound "audio/mirror_accept.ogg"
+    
+    show chie at Position(xalign=0.35, yalign=1.0)
+    with move
     
     # MINH's turn
     "Cuối cùng đến lượt Minh."
@@ -560,6 +706,7 @@ label scene4_truth_hallway:
         "Sự hèn nhát - \"Tớ muốn bỏ mặc các cậu\"":
             $ game_state.minh_confession = "wanted to abandon everyone"
             $ game_state.group_trust_level -= 10
+            $ game_state.authority += 1  # Being honest increases authority
             
             "MINH" "Tớ... tớ đã nhiều lần nghĩ đến việc bỏ các cậu lại."
             "MINH" "Khi gặp nguy hiểm, tớ chỉ nghĩ đến việc tự cứu mình thôi."
@@ -568,6 +715,7 @@ label scene4_truth_hallway:
         "Sự đố kỵ - \"Tớ ghen tị với các cậu\"":
             $ game_state.minh_confession = "jealous of friends"
             $ game_state.group_trust_level -= 5
+            $ game_state.authority += 1  # Being honest increases authority
             
             "MINH" "Tớ luôn ghen tị với các cậu."
             "MINH" "Lan thông minh, Tuấn mạnh mẽ, Mai được yêu quý..."
@@ -607,6 +755,12 @@ label scene5_voting_room:
     pause 1.5
     hide text
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     "Một căn phòng trắng toát."
     "Giữa phòng là một chiếc hòm phiếu đen như mực."
     
@@ -621,13 +775,22 @@ label scene5_voting_room:
     
     scene bg white_room
     
+    show aoto frown at left
+    show chie frown at Position(xalign=0.35, yalign=1.0)
+    show sora frown at Position(xalign=0.65, yalign=1.0)
+    show nora frown at right
+    with dissolve
+    
     "Không khí căng thẳng đến tột độ."
     
     if game_state.tuan_injury or game_state.lan_injury:
+        show sora closed frown
         "TUẤN" "Chúng ta... chúng ta phải hy sinh một người."
         
+        show chie closed frown
         "LAN" "Đúng vậy. Nếu không, tất cả sẽ chết."
         
+        show nora closed frown
         "MAI" "Nhưng... nhưng ai?"
         
         "Tuấn và Lan nhìn Mai."
@@ -638,12 +801,16 @@ label scene5_voting_room:
         
         "MAI" "K-không... Đừng...!"
         
+        show aoto open
         "MINH" "Đợi đã!"
     else:
+        show chie frown
         "LAN" "Chúng ta nên làm gì?"
         
+        show sora closed frown
         "TUẤN" "Tôi... tôi không biết."
         
+        show nora frown
         "MAI" "Minh, cậu quyết định đi."
     
     menu:
@@ -697,7 +864,8 @@ label persuasion_attempt:
         
         "LAN" "Không có bằng chứng gì cả!"
         
-        if game_state.group_trust_level >= 40:
+        # Without evidence, requires higher trust/authority
+        if game_state.trust >= 2 and game_state.authority >= 2:
             jump persuasion_success
         else:
             jump persuasion_failure
@@ -756,17 +924,30 @@ label persuasion_failure:
 label scene6_confrontation:
     scene bg white_room
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     play sound "audio/ballot_open.ogg"
     
     "Hòm phiếu từ từ mở ra."
     "Bốn tờ giấy trắng bay lên."
     
+    show sora open
     "TUẤN" "Chúng ta... thắng rồi?"
     
     play sound "audio/rumble.ogg"
     
     "Nhưng thay vì cánh cửa mở ra..."
     "Căn phòng rung chuyển dữ dội!"
+    
+    hide aoto
+    hide chie
+    hide sora
+    hide nora
+    with dissolve
     
     scene bg black
     with flash
@@ -795,6 +976,13 @@ label scene6_confrontation:
         jump bad_end_chaos
 
 label true_end_path_1:
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
+    show aoto open
     "MINH" "KHOAN!"
     
     "Bóng tối dừng lại."
@@ -811,8 +999,10 @@ label true_end_path_1:
     
     "QUẢN TRÒ" "...!!!"
     
+    show chie open
     "LAN" "Đúng rồi! Ngươi là người chơi thứ 5!"
     
+    show sora open
     "TUẤN" "Ngươi giả làm trọng tài để lừa chúng tôi giết nhau!"
     
     play sound "audio/paper_write.ogg"
@@ -822,6 +1012,13 @@ label true_end_path_1:
     jump true_ending_dawn
 
 label true_end_path_2:
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
+    show aoto open
     "MINH" "Mày định dọa ai?"
     
     "Minh giơ tập giấy ghi chú cũ nát lên."
@@ -834,13 +1031,16 @@ label true_end_path_2:
     "MINH" "Luật nói: 'Kẻ thua cuộc phải chết'."
     "MINH" "Nhưng khi cả 4 tờ đều trắng, KHÔNG AI THUA!"
     
+    show chie open
     "LAN" "Nếu không có người chơi nào thua..."
     "LAN" "...thì kẻ duy nhất thất bại trong việc duy trì trò chơi..."
     "LAN" "...là MÀY - QUẢN TRÒ!"
     
+    show aoto smile
     "MINH" "Quy tắc thứ 13: Khi Quản Trò thất bại, hắn sẽ mất quyền năng!"
     "MINH" "Mày không phải thần thánh. Mày chỉ là KÝ SINH TRÙNG!"
     
+    show sora smile
     "TUẤN" "Và giờ bọn tao sẽ nghiền nát mày!"
     
     play sound "audio/paper_write.ogg"
@@ -1033,6 +1233,12 @@ label true_ending_dawn:
     scene bg club_room
     with fade
     
+    show aoto at left
+    show chie at Position(xalign=0.35, yalign=1.0)
+    show sora at Position(xalign=0.65, yalign=1.0)
+    show nora at right
+    with dissolve
+    
     play music "audio/peaceful.ogg"
     
     "Cả bốn người từ từ tỉnh lại."
@@ -1041,12 +1247,16 @@ label true_ending_dawn:
     "Đồng hồ treo tường chỉ 11:05 PM."
     "Chỉ mới 5 phút kể từ khi bắt đầu nghi thức."
     
+    show sora open
     "TUẤN" "Chúng ta... sống sót?"
     
+    show chie smile
     "LAN" "Có vẻ vậy."
     
+    show nora smile
     "MAI" "Minh... cám ơn cậu."
     
+    show aoto smile
     "MINH" "Không. Cám ơn tất cả các cậu."
     "MINH" "Chúng ta đã tin tưởng nhau."
     
@@ -1054,14 +1264,24 @@ label true_ending_dawn:
     "Những bí mật đã được phơi bày."
     "Những vết thương đã được tạo ra."
     
+    show chie frown
     "LAN" "Chúng ta... vẫn là bạn chứ?"
     
+    show sora closed smile
     "TUẤN" "Tôi muốn vậy. Nếu các cậu tha thứ cho tôi."
     
+    show nora closed smile
     "MAI" "Tớ cũng xin lỗi. Xin lỗi tất cả."
     
+    show aoto smile
     "MINH" "Chúng ta không hoàn hảo. Nhưng chúng ta vẫn ở đây."
     "MINH" "Và đó là điều quan trọng nhất."
+    
+    hide aoto
+    hide chie
+    hide sora
+    hide nora
+    with dissolve
     
     scene bg dawn_sky
     with fade

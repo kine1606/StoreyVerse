@@ -12,10 +12,10 @@ define config.save_directory = "SuPhanBoi"
 
 # Character definitions
 define narrator = Character(None, kind=nvl)
-define MINH = Character("MINH", color="#4169e1", who_bold=True)
-define LAN = Character("LAN", color="#9370db", who_bold=True)
-define TUAN = Character("TUẤN", color="#ff6347", who_bold=True)
-define MAI = Character("MAI", color="#ffb6c1", who_bold=True)
+define MINH = Character("MINH", color="#4169e1", who_bold=True, image="aoto")
+define LAN = Character("LAN", color="#9370db", who_bold=True, image="chie")
+define TUAN = Character("TUẤN", color="#ff6347", who_bold=True, image="sora")
+define MAI = Character("MAI", color="#ffb6c1", who_bold=True, image="nora")
 
 # Special characters
 define GAMEMASTER = Character("???", color="#ff0000", who_bold=True, what_italic=True)
