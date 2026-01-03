@@ -300,6 +300,8 @@ screen navigation():
         if main_menu:
 
             textbutton _("Start") action Start()
+            
+            textbutton _("Skin Shop") action ShowMenu("skin_shop_screen")
 
         else:
 

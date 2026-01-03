@@ -2,6 +2,51 @@
 # Story Script
 
 # ============================================
+# CHARACTER TRANSFORMS (Scale & Position)
+# ============================================
+
+transform character_base:
+    zoom 0.7
+    yalign 1.0
+
+transform left:
+    character_base
+    xalign 0.15
+
+transform right:
+    character_base
+    xalign 0.85
+
+transform center:
+    character_base
+    xalign 0.5
+
+transform left_center:
+    character_base
+    xalign 0.35
+
+transform right_center:
+    character_base
+    xalign 0.65
+
+# For 4 characters spread evenly
+transform pos1:
+    character_base
+    xalign 0.1
+
+transform pos2:
+    character_base
+    xalign 0.35
+
+transform pos3:
+    character_base
+    xalign 0.65
+
+transform pos4:
+    character_base
+    xalign 0.9
+
+# ============================================
 # GAME INITIALIZATION & VARIABLES
 # ============================================
 
@@ -387,8 +432,8 @@ label scene2_branch_b_archive:
     with fade
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -501,8 +546,8 @@ label scene2_reunite:
     with fade
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -553,8 +598,8 @@ label scene3_chemistry:
     "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -759,8 +804,8 @@ label scene4_truth_hallway:
     "" "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -815,7 +860,7 @@ label scene4_truth_hallway:
     "" "Gương phát sáng xanh, chấp nhận sự thật."
     "" "Tuấn thở phào nhẹ nhõm, nhưng khuôn mặt vẫn đầy tội lỗi."
     
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show sora at right_center
     with move
     
     # MAI's confession
@@ -872,7 +917,7 @@ label scene4_truth_hallway:
     
     "" "Gương sáng lên, chấp nhận sự thật của Lan."
     
-    show chie at Position(xalign=0.35, yalign=1.0)
+    show chie at left_center
     with move
     
     # MINH's turn
@@ -938,8 +983,8 @@ label scene5_voting_room:
     "" "Chỉ có sự trắng tinh tối, bao quát mọi thứ."
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -967,8 +1012,8 @@ label scene5_voting_room:
     scene bg white_room
     
     show aoto frown at left
-    show chie frown at Position(xalign=0.35, yalign=1.0)
-    show sora frown at Position(xalign=0.65, yalign=1.0)
+    show chie frown at left_center
+    show sora frown at right_center
     show nora frown at right
     with dissolve
     
@@ -1136,8 +1181,8 @@ label scene6_confrontation:
     scene bg white_room
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -1197,8 +1242,8 @@ label scene6_confrontation:
 
 label true_end_path_1:
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -1245,8 +1290,8 @@ label true_end_path_1:
 
 label true_end_path_2:
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
@@ -1480,8 +1525,8 @@ label true_ending_dawn:
     with fade
     
     show aoto at left
-    show chie at Position(xalign=0.35, yalign=1.0)
-    show sora at Position(xalign=0.65, yalign=1.0)
+    show chie at left_center
+    show sora at right_center
     show nora at right
     with dissolve
     
