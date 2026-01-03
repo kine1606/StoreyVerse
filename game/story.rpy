@@ -90,13 +90,10 @@ label start:
     scene bg club night
     with fade
     
-    show text "Phòng sinh hoạt CLB Tâm linh\n11:00 PM" at truecenter
-    with dissolve
-    pause 2.0
-    hide text
+    "" "Phòng sinh hoạt CLB Tâm linh - 11:00 PM"
     
-    "Ánh nến leo lét trong căn phòng tối tăm."
-    "Bốn người bạn ngồi quay quanh một tấm bảng Ouija cũ kỹ."
+    "" "Ánh nến leo lét trong căn phòng tối tăm."
+    "" "Bốn người bạn ngồi quay quanh một tấm bảng Ouija cũ kỹ."
     
     # TUẤN speaks
     show sora at left
@@ -124,7 +121,7 @@ label start:
     "MINH" "Thôi nào. Chỉ là đọc vài câu cho vui thôi. Để tớ đọc câu cuối cùng nhé."
     
     play sound "audio/chant.ogg"
-    "Minh đọc câu niệm chú cuối cùng..."
+    "" "Minh đọc câu niệm chú cuối cùng..."
     
     hide aoto
     with dissolve
@@ -133,16 +130,14 @@ label start:
     with flash
     
     play sound "audio/candle_out.ogg"
-    "Tất cả ngọn nến đồng loạt tắt phụt!"
+    "" "Tất cả ngọn nến đồng loạt tắt phụt!"
     
     play sound "audio/pain.ogg"
-    "Một cơn đau buốt nhói lên trong đầu cả bốn người."
+    "" "Một cơn đau buốt nhói lên trong đầu cả bốn người."
     
     # Whispers - each character hears something different
-    show text "Những lời thì thầm vang lên..." at truecenter
-    with dissolve
-    pause 2.0
-    hide text
+    "" "Những lời thì thầm vang lên..."
+    pause 1.0
     
     play sound "audio/whisper.ogg"
     
@@ -157,8 +152,8 @@ label start:
     scene bg club_room
     with flash
     
-    "Khi ánh sáng trở lại, cánh cửa phòng đã biến mất."
-    "Thay vào đó là một cổng sắt rỉ máu với dòng chữ khắc sâu:"
+    "" "Khi ánh sáng trở lại, cánh cửa phòng đã biến mất."
+    "" "Thay vào đó là một cổng sắt rỉ máu với dòng chữ khắc sâu:"
     
     show text "{size=+20}{color=#ff0000}TRÒ CHƠI BẮT ĐẦU\nTÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT{/color}{/size}" at truecenter
     with dissolve
@@ -175,13 +170,10 @@ label scene2_corridor:
     scene bg old_corridor
     with fade
     
-    show text "Hành lang trường học cũ nát" at truecenter
-    with dissolve
-    pause 1.5
-    hide text
+    "" "Hành lang trường học cũ nát"
     
-    "Căn hành lang ẩm mốc, vách tường bong tróc."
-    "Mùi mốc nồng nặc khiến cả nhóm khó thở."
+    "" "Căn hành lang ẩm mốc, vách tường bong tróc."
+    "" "Mùi mốc nồng nặc khiến cả nhóm khó thở."
     
     show chie at right
     with dissolve
@@ -191,15 +183,15 @@ label scene2_corridor:
     with dissolve
     "TUẤN" "Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế."
     
+    "" "Minh phải đưa ra quyết định..."
+    
     menu:
-        "MINH phải quyết định:"
-        
-        "Chia nhóm hành động (Nguy hiểm)":
+        "Chia nhóm hành động {color=#ff6666}(Nguy hiểm){/color}":
             $ game_state.group_trust_level -= 10
             # Leaving friends behind reduces trust
             jump scene2_branch_a_library
             
-        "Đi cùng nhau (An toàn)":
+        "Đi cùng nhau {color=#66ff66}(An toàn){/color}":
             $ game_state.group_trust_level += 10
             # Staying together maintains trust
             jump scene2_branch_b_archive
@@ -216,17 +208,17 @@ label scene2_branch_a_library:
     show chie at right
     with dissolve
     
-    "Minh và Lan bước vào thư viện tối tăm."
-    "Ánh đèn pin rọi lên những giá sách bụi mờ."
+    "" "Minh và Lan bước vào thư viện tối tăm."
+    "" "Ánh đèn pin rọi lên những giá sách bụi mờ."
     
     play sound "audio/book_fall.ogg"
     
-    "Một cuốn sách rơi xuống đất, trang giở sẵn."
+    "" "Một cuốn sách rơi xuống đất, trang giở sẵn."
     
     show chie frown
     "LAN" "Minh, xem này!"
     
-    "Đó là một trang nhật ký viết nguệch ngoạc:"
+    "" "Đó là một trang nhật ký viết nguệch ngoạc:"
     
     show text "{i}\"Mai đang diễn kịch. Tôi biết. Cô ta không yếu đuối như vẻ bề ngoài.\"{/i}" at truecenter
     with dissolve
@@ -235,22 +227,22 @@ label scene2_branch_a_library:
     
     "LAN" "Thấy chưa? Mai đang lừa dối chúng ta! Đi thôi!"
     
+    "" "{i}Minh cảm thấy có gì đó không đúng...{/i}"
+    
     menu:
-        "MINH quyết định:"
-        
-        "Tin ngay và rời đi":
+        "Tin ngay và rời đi {color=#ff8866}(Vội vàng){/color}":
             $ game_state.group_trust_level -= 20
             $ game_state.trust -= 1  # A1: Believing too quickly reduces trust
-            "Minh và Lan vội vã rời khỏi thư viện."
-            "Họ bỏ lỡ manh mối quan trọng..."
+            "" "Minh và Lan vội vã rời khỏi thư viện."
+            "" "Họ bỏ lỡ manh mối quan trọng..."
             jump scene2_reunite
             
-        "Kiểm tra kỹ hơn":
+        "Kiểm tra kỹ hơn {color=#66aaff}(Cẩn thận){/color}":
             $ game_state.group_trust_level += 5
             
             "MINH" "Khoan đã... Trang này trông quá... giả tạo."
             
-            "Minh lật lại trang nhật ký, phát hiện một mảnh giấy nhỏ kẹp bên trong:"
+            "" "Minh lật lại trang nhật ký, phát hiện một mảnh giấy nhỏ kẹp bên trong:"
             
             show text "{color=#00ff00}\"MỌI BẰNG CHỨNG ĐỀU LÀ GIẢ.\nTIN TƯỞNG NHAU LÀ LỐI THOÁT DUY NHẤT.\"{/color}" at truecenter
             with dissolve
@@ -265,15 +257,17 @@ label scene2_branch_a_library:
             "MINH" "Tớ hiểu rồi... Tất cả chỉ là bẫy để chia rẽ chúng ta."
             
             # Dead End Trap
-            "Khi chuẩn bị rời đi, một cuốn sách phát sáng màu tím xuất hiện trên giá."
-            "Nó rung rinh, như thể đang mời gọi..."
+            "" "Khi chuẩn bị rời đi, một cuốn sách phát sáng màu tím xuất hiện trên giá."
+            "" "Nó rung rinh, như thể đang mời gọi..."
+            
+            "" "{color=#9966ff}Ánh sáng huyền bí tỏa ra từ cuốn sách...{/color}"
             
             menu:
-                "Một cuốn sách lạ đang phát sáng..."
+                "{color=#9966ff}\"Đợi đã, cuốn sách kia phát sáng!\"{/color}":
+                    # play sound "audio/curiosity.ogg" if renpy.loadable("audio/curiosity.ogg") else None
                 
-                "\"Đợi đã, cuốn sách kia phát sáng!\"":
-                    "Minh không cưỡng lại được sự tò mò."
-                    "Anh chạm tay vào cuốn sách..."
+                    "" "Minh không cưỡng lại được sự tò mò."
+                    "" "Anh chạm tay vào cuốn sách..."
                     
                     scene bg black
                     with flash
@@ -286,13 +280,13 @@ label scene2_branch_a_library:
                     
                     jump bad_end_1_lost
                     
-                "\"Đi thôi, tớ có cảm giác không lành.\"":
+                "{color=#66ff66}\"Đi thôi, tớ có cảm giác không lành.\"{/color}":
                     $ game_state.group_trust_level += 10
                     # S2: Being cautious and avoiding trap
                     
                     "MINH" "Không, có gì đó sai sai. Chúng ta đi thôi."
                     
-                    "Cả hai nhanh chóng rời khỏi thư viện."
+                    "" "Cả hai nhanh chóng rời khỏi thư viện."
                     
                     jump scene2_reunite
 
@@ -310,13 +304,13 @@ label scene2_branch_b_archive:
     show nora at right
     with dissolve
     
-    "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
-    "Giá tài liệu xếp chồng lên nhau một cách lộn xộn."
+    "" "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
+    "" "Giá tài liệu xếp chồng lên nhau một cách lộn xộn."
     
     play sound "audio/rumble.ogg"
     
-    "Đột nhiên, căn phòng rung chuyển dữ dội!"
-    "Trần nhà bắt đầu nứt ra, mảng tường rơi xuống!"
+    "" "Đột nhiên, căn phòng rung chuyển dữ dội!"
+    "" "Trần nhà bắt đầu nứt ra, mảng tường rơi xuống!"
     
     show ghost_minion at center
     with dissolve
@@ -328,55 +322,55 @@ label scene2_branch_b_archive:
     hide ghost_minion
     with dissolve
     
-    "Trên bàn làm việc lộn xộn, có hai tài liệu nổi bật:"
-    "1. CUỐN NHẬT KÝ BÌA ĐỎ - Đang mở sẵn, nét chữ đầy thù hận"
-    "2. TẬP GIẤY GHI CHÚ CŨ NÁT - Toàn công thức dịch thuật khô khan"
+    "" "Trên bàn làm việc lộn xộn, có hai tài liệu nổi bật:"
+    "" "1. CUỐN NHẬT KÝ BÌA ĐỎ - Đang mở sẵn, nét chữ đầy thù hận"
+    "" "2. TẬP GIẤY GHI CHÚ CŨ NÁT - Toàn công thức dịch thuật khô khan"
     
-    "Minh chỉ có thể cầm MỘT thứ trước khi chạy!"
+    "" "Minh chỉ có thể cầm MỘT thứ trước khi chạy!"
+    
+    "" "{color=#ff4444}{b}Chọn nhanh! Thời gian không còn nhiều!{/b}{/color}"
     
     menu:
-        "Chọn nhanh! Thời gian không còn nhiều!"
-        
-        "Chộp lấy Cuốn Nhật Ký Bìa Đỏ":
+        "Chộp lấy {color=#ff6666}Cuốn Nhật Ký Bìa Đỏ{/color}":
             $ game_state.chose_red_diary = True
             $ game_state.group_trust_level -= 15
             $ game_state.authority -= 1  # B1: Taking emotional bait reduces authority
             
             play sound "audio/grab.ogg"
             
-            "Minh túm lấy cuốn nhật ký và chạy theo nhóm!"
+            "" "Minh túm lấy cuốn nhật ký và chạy theo nhóm!"
             
             scene bg old_corridor
             with fade
             
-            "Cả nhóm chạy ra ngoài, thở hổn hển."
+            "" "Cả nhóm chạy ra ngoài, thở hổn hển."
             
-            "Minh mở cuốn nhật ký ra đọc:"
+            "" "Minh mở cuốn nhật ký ra đọc:"
             
             show text "{i}\"Thằng bạn thân nhất đã đâm sau lưng tao...\nĐừng tin ai...\nTất cả đều muốn mày chết...\"{/i}" at truecenter
             with dissolve
             pause 3.0
             hide text
             
-            "Những dòng chữ hoang tưởng khiến Minh càng thêm nghi ngờ."
-            "Hạt giống hoài nghi đã được gieo vào tâm trí anh..."
+            "" "Những dòng chữ hoang tưởng khiến Minh càng thêm nghi ngờ."
+            "" "Hạt giống hoài nghi đã được gieo vào tâm trí anh..."
             
             jump scene3_chemistry
             
-        "Giật lấy Tập Giấy Ghi Chú":
+        "Giật lấy {color=#66ff66}Tập Giấy Ghi Chú{/color}":
             $ game_state.has_translation_document = True
             $ game_state.group_trust_level += 20
             
             play sound "audio/grab.ogg"
             
-            "Minh chộp lấy tập giấy cũ nát và lao ra ngoài!"
+            "" "Minh chộp lấy tập giấy cũ nát và lao ra ngoài!"
             
             scene bg old_corridor
             with fade
             
-            "Cả nhóm an toàn. Minh mở tập giấy ra đọc lướt..."
+            "" "Cả nhóm an toàn. Minh mở tập giấy ra đọc lướt..."
             
-            "Đây là bản dịch luật chơi gốc!"
+            "" "Đây là bản dịch luật chơi gốc!"
             
             show text "{color=#00ff00}Quy tắc thứ 13:\nQuản Trò không phải trọng tài.\nQuản Trò là 'Người Chơi' ở vị thế quan sát.\nHắn sống bằng nỗi sợ.\n\nNếu các 'Vật Hiến Tế' từ chối giết nhau,\nQuản Trò sẽ vi phạm Giao Kèo\nvà buộc phải hiện nguyên hình.\n\nĐÓ LÀ LÚC HẮN CÓ THỂ BỊ GIẾT.{/color}" at truecenter
             with dissolve
@@ -401,7 +395,7 @@ label scene2_reunite:
     show nora at right
     with dissolve
     
-    "Minh và Lan gặp lại Tuấn và Mai ở hành lang."
+    "" "Minh và Lan gặp lại Tuấn và Mai ở hành lang."
     
     show sora frown
     "TUẤN" "Các cậu tìm được gì không?"
@@ -427,10 +421,7 @@ label scene3_chemistry:
     scene bg chemistry_room
     with fade
     
-    show text "Phòng Hóa Học" at truecenter
-    with dissolve
-    pause 1.5
-    hide text
+    "Phòng Hóa Học"
     
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
@@ -438,12 +429,12 @@ label scene3_chemistry:
     show nora at right
     with dissolve
     
-    "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
-    "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
+    "" "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
+    "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
     
-    "Giữa phòng có một chiếc hộp kính chứa dung dịch sủi bọt."
-    "Bên trong có rết độc bò lổm ngổm."
-    "Một chiếc chìa khóa vàng nằm dưới đáy."
+    "" "Giữa phòng có một chiếc hộp kính chứa dung dịch sủi bọt."
+    "" "Bên trong có rết độc bò lổm ngổm."
+    "" "Một chiếc chìa khóa vàng nằm dưới đáy."
     
     play sound "audio/countdown.ogg"
     
@@ -464,19 +455,19 @@ label scene3_chemistry:
     show nora frown
     "MAI" "Chúng ta... chúng ta phải làm sao đây?"
     
-    "Đồng hồ đếm ngược. 45 giây... 40 giây..."
+    "" "Đồng hồ đếm ngược. 45 giây... 40 giây..."
+    
+    "" "{i}{color=#ffaa00}Thời gian đang cạn kiệt... Minh phải quyết định ngay!{/color}{/i}"
     
     menu:
-        "MINH phải quyết định ngay!"
-        
-        "\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"":
+        "{color=#888888}\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"{/color}":
             $ game_state.group_trust_level -= 30
             # A: Hesitating leads to death - no variables matter here
             
-            "Minh do dự, không thể đưa ra quyết định."
-            "Thời gian trôi qua từng giây..."
+            "" "Minh do dự, không thể đưa ra quyết định."
+            "" "Thời gian trôi qua từng giây..."
             
-            "30... 20... 10..."
+            "" "30... 20... 10..."
             
             hide screen countdown_timer
             
@@ -495,7 +486,7 @@ label scene3_chemistry:
             
             jump bad_end_2_gas_room
             
-        "Chỉ định Tuấn làm":
+        "{color=#ff8866}Chỉ định Tuấn làm{/color}":
             $ game_state.tuan_injury = True
             $ game_state.group_trust_level -= 20
             $ game_state.authority -= 2  # B: Assigning someone else reduces authority
@@ -506,29 +497,29 @@ label scene3_chemistry:
             
             "MINH" "Không còn thời gian! Nhanh lên!"
             
-            "Tuấn nghiến răng, giận dữ nhìn Minh."
-            "Anh ta thò tay vào hộp kính..."
+            "" "Tuấn nghiến răng, giận dữ nhìn Minh."
+            "" "Anh ta thò tay vào hộp kính..."
             
             play sound "audio/acid_burn.ogg"
             
             "TUẤN" "AAAAAHHHHH!!!"
             
-            "Bàn tay Tuấn bị bỏng nặng bởi axit!"
-            "Nhưng anh ta đã lấy được chìa khóa."
+            "" "Bàn tay Tuấn bị bỏng nặng bởi axit!"
+            "" "Nhưng anh ta đã lấy được chìa khóa."
             
             hide screen countdown_timer
             
             scene bg black
             with fade
             
-            "Cửa phòng mở ra. Nhóm thoát ra ngoài."
+            "" "Cửa phòng mở ra. Nhóm thoát ra ngoài."
             
-            "Tuấn băng bó vết thương, ánh mắt căm hận nhìn Minh."
-            "Hạt giống thù hận đã được gieo..."
+            "" "Tuấn băng bó vết thương, ánh mắt căm hận nhìn Minh."
+            "" "Hạt giống thù hận đã được gieo..."
             
             jump scene4_truth_hallway
             
-        "Chỉ định Lan làm":
+        "{color=#ff8866}Chỉ định Lan làm{/color}":
             $ game_state.lan_injury = True
             $ game_state.group_trust_level -= 20
             $ game_state.authority -= 2  # B: Assigning someone else reduces authority
@@ -539,28 +530,28 @@ label scene3_chemistry:
             
             "MINH" "Lan, nhanh lên! Chúng ta không còn thời gian!"
             
-            "Lan run rẩy, nước mắt chảy dài."
-            "Cô thò tay vào hộp kính..."
+            "" "Lan run rẩy, nước mắt chảy dài."
+            "" "Cô thò tay vào hộp kính..."
             
             play sound "audio/acid_burn.ogg"
             
             "LAN" "AAAHHHH! ĐAU!!!"
             
-            "Bàn tay Lan bị bỏng, da đỏ bừng."
-            "Nhưng cô đã lấy được chìa khóa."
+            "" "Bàn tay Lan bị bỏng, da đỏ bừng."
+            "" "Nhưng cô đã lấy được chìa khóa."
             
             hide screen countdown_timer
             
             scene bg black
             with fade
             
-            "Cửa phòng mở. Nhóm chạy ra ngoài."
+            "" "Cửa phòng mở. Nhóm chạy ra ngoài."
             
-            "Lan khóc nức nở, nhìn Minh với ánh mắt oán hận."
+            "" "Lan khóc nức nở, nhìn Minh với ánh mắt oán hận."
             
             jump scene4_truth_hallway
             
-        "\"Để tớ làm.\"":
+        "{color=#66ff66}\"Để tớ làm.\"{/color}":
             $ game_state.minh_injury = True
             $ game_state.group_trust_level += 30
             $ game_state.trust += 1  # C: Self-sacrifice increases trust
@@ -574,21 +565,21 @@ label scene3_chemistry:
             
             "MINH" "Đừng bàn nữa!"
             
-            "Minh không do dự, thò tay vào hộp kính."
+            "" "Minh không do dự, thò tay vào hộp kính."
             
             play sound "audio/acid_burn.ogg"
             
             "MINH" "Ghhh...!"
             
-            "Axit ăn vào da tay, đau như cắt!"
-            "Nhưng Minh cắn răng chịu đựng, túm lấy chìa khóa!"
+            "" "Axit ăn vào da tay, đau như cắt!"
+            "" "Nhưng Minh cắn răng chịu đựng, túm lấy chìa khóa!"
             
             hide screen countdown_timer
             
             scene bg black
             with fade
             
-            "Cửa mở ra. Minh choáng váng, được Tuấn đỡ."
+            "" "Cửa mở ra. Minh choáng váng, được Tuấn đỡ."
             
             "TUẤN" "Cậu... thật sự điên rồi."
             
@@ -596,7 +587,7 @@ label scene3_chemistry:
             
             "MAI" "Minh... Tớ xin lỗi... Tại tớ mà cậu..."
             
-            "Niềm tin trong nhóm tăng lên đáng kể."
+            "" "Niềm tin trong nhóm tăng lên đáng kể."
             
             jump scene4_truth_hallway
 
@@ -608,10 +599,7 @@ label scene4_truth_hallway:
     scene bg mirror_hallway
     with fade
     
-    show text "Hành Lang Gương" at truecenter
-    with dissolve
-    pause 1.5
-    hide text
+    "Hành Lang Gương"
     
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
@@ -619,8 +607,8 @@ label scene4_truth_hallway:
     show nora at right
     with dissolve
     
-    "Một hành lang dài đầy gương."
-    "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
+    "" "Một hành lang dài đầy gương."
+    "" "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
     
     "GIỌNG NÓI QUẢN TRÒ" "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất."
     "GIỌNG NÓI QUẢN TRÒ" "Nói dối, gương sẽ vỡ... và các ngươi sẽ chết."
@@ -632,7 +620,7 @@ label scene4_truth_hallway:
     "TUẤN" "Không có lựa chọn nào khác."
     
     # TUẤN's confession
-    "Tuấn bước lên trước, nhìn vào gương."
+    "" "Tuấn bước lên trước, nhìn vào gương."
     
     show sora frown at center
     with move
@@ -649,13 +637,13 @@ label scene4_truth_hallway:
     
     play sound "audio/mirror_accept.ogg"
     
-    "Gương phát sáng xanh, chấp nhận sự thật."
+    "" "Gương phát sáng xanh, chấp nhận sự thật."
     
     show sora at Position(xalign=0.65, yalign=1.0)
     with move
     
     # MAI's confession
-    "Mai run rẩy bước tới."
+    "" "Mai run rẩy bước tới."
     
     show nora frown at center
     with move
@@ -671,13 +659,13 @@ label scene4_truth_hallway:
     
     play sound "audio/mirror_accept.ogg"
     
-    "Gương lại sáng lên."
+    "" "Gương lại sáng lên."
     
     show nora at right
     with move
     
     # LAN's confession
-    "Lan thở dài, bước ra."
+    "" "Lan thở dài, bước ra."
     
     show chie closed frown at center
     with move
@@ -697,13 +685,13 @@ label scene4_truth_hallway:
     with move
     
     # MINH's turn
-    "Cuối cùng đến lượt Minh."
-    "Tất cả nhìn anh."
+    "" "Cuối cùng đến lượt Minh."
+    "" "Tất cả nhìn anh."
+    
+    "" "{i}Minh hít một hơi thật sâu. Đã đến lúc phải đối mặt với chính mình...{/i}"
     
     menu:
-        "Minh phải thú nhận..."
-        
-        "Sự hèn nhát - \"Tớ muốn bỏ mặc các cậu\"":
+        "{color=#ff8866}Sự hèn nhát{/color} - \"Tớ muốn bỏ mặc các cậu\"":
             $ game_state.minh_confession = "wanted to abandon everyone"
             $ game_state.group_trust_level -= 10
             $ game_state.authority += 1  # Being honest increases authority
@@ -712,7 +700,7 @@ label scene4_truth_hallway:
             "MINH" "Khi gặp nguy hiểm, tớ chỉ nghĩ đến việc tự cứu mình thôi."
             "MINH" "Tớ là một kẻ hèn nhát. Xin lỗi..."
             
-        "Sự đố kỵ - \"Tớ ghen tị với các cậu\"":
+        "{color=#66aaff}Sự đố kỵ{/color} - \"Tớ ghen tị với các cậu\"":
             $ game_state.minh_confession = "jealous of friends"
             $ game_state.group_trust_level -= 5
             $ game_state.authority += 1  # Being honest increases authority
@@ -724,12 +712,12 @@ label scene4_truth_hallway:
     
     play sound "audio/mirror_accept.ogg"
     
-    "Tất cả các gương sáng lên."
-    "Một cánh cửa hiện ra ở cuối hành lang."
+    "" "Tất cả các gương sáng lên."
+    "" "Một cánh cửa hiện ra ở cuối hành lang."
     
-    "Cả bốn người im lặng."
-    "Bí mật xấu xa nhất của họ đã được phơi bày."
-    "Nhưng họ vẫn đang sống."
+    "" "Cả bốn người im lặng."
+    "" "Bí mật xấu xa nhất của họ đã được phơi bày."
+    "" "Nhưng họ vẫn đang sống."
     
     "MAI" "Chúng ta... đều không hoàn hảo."
     
@@ -737,8 +725,8 @@ label scene4_truth_hallway:
     
     if game_state.group_trust_level > 0:
         $ game_state.group_trust_level += 20
-        "Một cảm giác kỳ lạ lan toa trong nhóm."
-        "Họ hiểu nhau hơn... và cũng tha thứ hơn."
+        "" "Một cảm giác kỳ lạ lan toa trong nhóm."
+        "" "Họ hiểu nhau hơn... và cũng tha thứ hơn."
     
     jump scene5_voting_room
 
@@ -750,10 +738,7 @@ label scene5_voting_room:
     scene bg white_room
     with fade
     
-    show text "Căn Phòng Trắng" at truecenter
-    with dissolve
-    pause 1.5
-    hide text
+    "Căn Phòng Trắng"
     
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
@@ -761,10 +746,10 @@ label scene5_voting_room:
     show nora at right
     with dissolve
     
-    "Một căn phòng trắng toát."
-    "Giữa phòng là một chiếc hòm phiếu đen như mực."
+    "" "Một căn phòng trắng toát."
+    "" "Giữa phòng là một chiếc hòm phiếu đen như mực."
     
-    "Bốn tờ giấy trắng và bốn cây bút đen xuất hiện trước mặt mỗi người."
+    "" "Bốn tờ giấy trắng và bốn cây bút đen xuất hiện trước mặt mỗi người."
     
     play sound "audio/gamemaster_voice.ogg"
     
@@ -813,13 +798,13 @@ label scene5_voting_room:
         show nora frown
         "MAI" "Minh, cậu quyết định đi."
     
+    "" "{i}{color=#ffffff}Đây là khoảnh khắc quyết định... Số phận của cả nhóm nằm trong tay Minh.{/color}{/i}"
+    
     menu:
-        "MINH phải đưa ra quyết định cuối cùng:"
-        
-        "Đồng ý viết tên Mai (Phản bội)":
+        "Đồng ý viết tên Mai {color=#ff4444}(Phản bội){/color}":
             jump normal_end_a_black_ink
             
-        "Nộp giấy trắng và thuyết phục mọi người (Tin tưởng)":
+        "Nộp giấy trắng và thuyết phục mọi người {color=#66ff66}(Tin tưởng){/color}":
             jump persuasion_attempt
 
 label persuasion_attempt:
@@ -908,13 +893,13 @@ label persuasion_failure:
     
     "MAI" "Không... KHÔNG!!!"
     
+    "" "{i}{color=#ffcc00}Đây là cơ hội cuối cùng của Minh...{/color}{/i}"
+    
     menu:
-        "Minh còn cơ hội cuối cùng..."
-        
-        "Viết tên Mai (Cứu bản thân)":
+        "Viết tên Mai {color=#ff4444}(Cứu bản thân){/color}":
             jump normal_end_a_black_ink
             
-        "Vẫn nộp giấy trắng (Giữ nguyên tắc)":
+        "Vẫn nộp giấy trắng {color=#66ff66}(Giữ nguyên tắc){/color}":
             jump normal_end_b_cracked
 
 # ============================================
@@ -932,16 +917,16 @@ label scene6_confrontation:
     
     play sound "audio/ballot_open.ogg"
     
-    "Hòm phiếu từ từ mở ra."
-    "Bốn tờ giấy trắng bay lên."
+    "" "Hòm phiếu từ từ mở ra."
+    "" "Bốn tờ giấy trắng bay lên."
     
     show sora open
     "TUẤN" "Chúng ta... thắng rồi?"
     
     play sound "audio/rumble.ogg"
     
-    "Nhưng thay vì cánh cửa mở ra..."
-    "Căn phòng rung chuyển dữ dội!"
+    "" "Nhưng thay vì cánh cửa mở ra..."
+    "" "Căn phòng rung chuyển dữ dội!"
     
     hide aoto
     hide chie
@@ -985,7 +970,7 @@ label true_end_path_1:
     show aoto open
     "MINH" "KHOAN!"
     
-    "Bóng tối dừng lại."
+    "" "Bóng tối dừng lại."
     
     "MINH" "Trong chúng tôi không ai là kẻ mạo danh!"
     
@@ -993,7 +978,7 @@ label true_end_path_1:
     
     "MINH" "Vậy thì chỉ còn một đáp án..."
     
-    "Minh rút mảnh giấy cảnh báo ra."
+    "" "Minh rút mảnh giấy cảnh báo ra."
     
     "MINH" "{size=+15}NGƯƠI MỚI LÀ KẺ MẠO DANH, QUẢN TRÒ!{/size}"
     
@@ -1097,15 +1082,15 @@ label normal_end_a_black_ink:
     
     play sound "audio/paper_write.ogg"
     
-    "Minh run rẩy viết tên 'Mai' vào giấy."
+    "" "Minh run rẩy viết tên 'Mai' vào giấy."
     
     "MAI" "Minh...? Cậu... cậu làm gì vậy?"
     
-    "Cả bốn người nộp phiếu."
+    "" "Cả bốn người nộp phiếu."
     
     play sound "audio/ballot_open.ogg"
     
-    "Hòm phiếu mở ra: 3 phiếu 'Mai'. 1 phiếu trắng."
+    "" "Hòm phiếu mở ra: 3 phiếu 'Mai'. 1 phiếu trắng."
     
     "MAI" "Không... các cậu..."
     
@@ -1114,14 +1099,14 @@ label normal_end_a_black_ink:
     
     play sound "audio/scream.ogg"
     
-    "Mai biến mất trong tiếng thét."
+    "" "Mai biến mất trong tiếng thét."
     
     scene bg club_room
     with fade
     
-    "Ba người còn lại tỉnh lại trong phòng CLB."
-    "Họ sống sót."
-    "Nhưng Mai không còn đó."
+    "" "Ba người còn lại tỉnh lại trong phòng CLB."
+    "" "Họ sống sót."
+    "" "Nhưng Mai không còn đó."
     
     play music "audio/melancholic.ogg"
     
@@ -1130,9 +1115,9 @@ label normal_end_a_black_ink:
     
     pause 2.0
     
-    "Cả ba người không bao giờ nói chuyện với nhau nữa."
-    "Họ sống trong day dứt suốt đời."
-    "Giọt mực đen đó... không bao giờ tẩy sạch."
+    "" "Cả ba người không bao giờ nói chuyện với nhau nữa."
+    "" "Họ sống trong day dứt suốt đời."
+    "" "Giọt mực đen đó... không bao giờ tẩy sạch."
     
     pause 3.0
     
@@ -1144,14 +1129,14 @@ label normal_end_b_cracked:
     
     play sound "audio/paper_write.ogg"
     
-    "Minh nộp giấy trắng."
-    "Nhưng Tuấn và Lan đã viết 'Mai'."
+    "" "Minh nộp giấy trắng."
+    "" "Nhưng Tuấn và Lan đã viết 'Mai'."
     
     play sound "audio/ballot_open.ogg"
     
-    "Hòm mở: 2 phiếu 'Mai'. 2 phiếu trắng."
+    "" "Hòm mở: 2 phiếu 'Mai'. 2 phiếu trắng."
     
-    "Mai có số phiếu cao nhất."
+    "" "Mai có số phiếu cao nhất."
     
     scene bg black
     with flash
@@ -1172,13 +1157,13 @@ label normal_end_b_cracked:
     
     pause 2.0
     
-    "Ba người tỉnh lại."
-    "Minh nhìn Tuấn và Lan với ánh mắt căm phẫn."
+    "" "Ba người tỉnh lại."
+    "" "Minh nhìn Tuấn và Lan với ánh mắt căm phẫn."
     
     "MINH" "Các cậu... đã giết Mai."
     
-    "Tình bạn tan vỡ hoàn toàn."
-    "Họ không bao giờ gặp lại nhau nữa."
+    "" "Tình bạn tan vỡ hoàn toàn."
+    "" "Họ không bao giờ gặp lại nhau nữa."
     
     pause 3.0
     
@@ -1214,7 +1199,7 @@ label true_ending_dawn:
     
     play sound "audio/fire_burn.ogg"
     
-    "Hòm phiếu bốc cháy dữ dội!"
+    "" "Hòm phiếu bốc cháy dữ dội!"
     
     show gamemaster at center
     
@@ -1228,7 +1213,7 @@ label true_ending_dawn:
     scene bg white
     with flash
     
-    "Ánh sáng chói lọi!"
+    "" "Ánh sáng chói lọi!"
     
     scene bg club_room
     with fade
@@ -1241,11 +1226,11 @@ label true_ending_dawn:
     
     play music "audio/peaceful.ogg"
     
-    "Cả bốn người từ từ tỉnh lại."
-    "Họ đang nằm trong phòng CLB."
+    "" "Cả bốn người từ từ tỉnh lại."
+    "" "Họ đang nằm trong phòng CLB."
     
-    "Đồng hồ treo tường chỉ 11:05 PM."
-    "Chỉ mới 5 phút kể từ khi bắt đầu nghi thức."
+    "" "Đồng hồ treo tường chỉ 11:05 PM."
+    "" "Chỉ mới 5 phút kể từ khi bắt đầu nghi thức."
     
     show sora open
     "TUẤN" "Chúng ta... sống sót?"
@@ -1260,9 +1245,9 @@ label true_ending_dawn:
     "MINH" "Không. Cám ơn tất cả các cậu."
     "MINH" "Chúng ta đã tin tưởng nhau."
     
-    "Họ ngồi im lặng một lúc."
-    "Những bí mật đã được phơi bày."
-    "Những vết thương đã được tạo ra."
+    "" "Họ ngồi im lặng một lúc."
+    "" "Những bí mật đã được phơi bày."
+    "" "Những vết thương đã được tạo ra."
     
     show chie frown
     "LAN" "Chúng ta... vẫn là bạn chứ?"
@@ -1286,7 +1271,7 @@ label true_ending_dawn:
     scene bg dawn_sky
     with fade
     
-    "Bên ngoài cửa sổ, bình minh đang dần ló rạng."
+    "" "Bên ngoài cửa sổ, bình minh đang dần ló rạng."
     
     centered "{size=+30}{color=#ffff00}TRUE ENDING{/color}{/size}"
     centered "{size=+20}BÌNH MINH{/size}"

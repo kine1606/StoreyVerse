@@ -115,3 +115,208 @@ III. CÁC KẾT THÚC (ENDINGS)
 o Quỷ dữ bị tiêu diệt. Cả nhóm tỉnh lại trong phòng CLB lúc 11:05 đêm.
 o Họ chấp nhận những bí mật xấu xí của nhau (đã lộ ở Cảnh 4) và chọn tha thứ.
 
+KỊCH BẢN VISUAL NOVEL: SỰ PHẢN BỘI (REVISED VERSION)
+
+MỤC TIÊU BẢN SỬA:
+
+* Mọi lựa chọn đều để lại HẬU QUẢ TÂM LÝ (vết sẹo)
+* Các nhánh KHÔNG tách rời mà HỘI TỤ tại Cảnh 5 với vị thế khác nhau
+* Chủ đề: Kẻ phản bội không phải quỷ, mà là sự hèn nhát của con người
+
+==================================================
+I. THÔNG TIN CHUNG
+
+LOGLINE:
+Bốn người bạn bị cuốn vào một trò chơi tâm lý do một thực thể tà ác thao túng. Không có kẻ mạo danh nào cả — chỉ có nỗi sợ khiến họ phản bội lẫn nhau. Lối thoát duy nhất là tin tưởng, nhưng niềm tin ấy luôn đến quá muộn.
+
+NHÂN VẬT:
+
+* MINH (NVC): Trưởng nhóm. Người chơi điều khiển. Gánh trách nhiệm lãnh đạo.
+* LAN: Thông minh, lý trí, tin vào luật lệ và bằng chứng.
+* TUẤN: Bốc đồng, bảo vệ Mai, sợ bị bỏ rơi.
+* MAI: Nhạy cảm, phụ thuộc cảm xúc, sợ bị hi sinh.
+
+BIẾN ẨN (KHÔNG HIỆN UI):
+
+* TRUST (Niềm tin của nhóm dành cho Minh)
+* GUILT (Tội lỗi tích tụ giữa các nhân vật)
+* AUTHORITY (Quyền đạo đức của Minh trong phòng bỏ phiếu)
+
+==================================================
+II. KỊCH BẢN CHI TIẾT
+
+---
+
+CẢNH 1: LỜI MỜI GỌI
+
+BỐI CẢNH: Phòng sinh hoạt CLB Tâm linh – 11:00 PM. Ánh nến lập lòe.
+
+(Sau nghi thức)
+
+LỜI THÌ THẦM RIÊNG BIỆT:
+
+* Minh: "Một trong số các ngươi sẽ phản bội."
+* Lan: "Luật lệ có thể bị bóp méo."
+* Tuấn: "Mai sẽ bị hi sinh nếu mày không bảo vệ nó."
+* Mai: "Họ sẽ bỏ rơi ngươi."
+
+Cánh cửa biến mất.
+CỔNG SẮT HIỆN RA:
+"TRÒ CHƠI BẮT ĐẦU – KẺ PHẢN BỘI SẼ ĐƯỢC SỐNG"
+
+---
+
+CẢNH 2: MÊ CUNG MANH MỐI
+
+LAN: "Nếu có kẻ phản bội, nó sẽ để lại dấu vết."
+TUẤN: "Chia ra tìm nhanh hơn."
+
+LỰA CHỌN CỦA MINH:
+
+A. CHIA NHÓM
+B. ĐI CHUNG
+
+---
+
+NHÁNH A: CHIA NHÓM (THƯ VIỆN)
+
+(Minh & Lan)
+
+TÌNH TIẾT MỚI:
+Lan phát hiện nhật ký cũ mô tả một "người yếu đuối giả tạo".
+
+LỰA CHỌN:
+A1. Tin ngay
+→ Minh bỏ qua chi tiết bất thường.
+→ TRUST -1
+
+A2. Đọc kỹ
+→ Phát hiện mảnh giấy ẩn:
+"MỌI BẰNG CHỨNG ĐỀU ĐƯỢC DÀN DỰNG"
+→ KEY ITEM
+
+KHI QUAY LẠI:
+Mai đang khóc nức nở.
+Tuấn đứng chắn trước mặt Mai.
+
+TUẤN: "Mày bỏ tụi tao lại."
+→ TRUST -1
+
+---
+
+NHÁNH B: ĐI CHUNG (PHÒNG LƯU TRỮ)
+
+Căn phòng sụp đổ.
+Minh chỉ kịp lấy MỘT vật.
+
+B1. NHẬT KÝ BÌA ĐỎ
+→ Minh đọc những lời hoang tưởng.
+→ Minh bắt đầu nghi ngờ.
+→ AUTHORITY -1
+
+B2. TẬP GIẤY GHI CHÚ
+→ Dịch luật gốc.
+→ KEY ITEM: QUY TẮC 13
+
+---
+
+CẢNH 3: PHÒNG HÓA HỌC
+
+Đồng hồ: 60s
+Chìa khóa trong axit.
+
+QUẢN TRÒ:
+"CHỌN AI PHẢI ĐAU"
+
+LỰA CHỌN:
+
+A. DO DỰ
+→ Cả nhóm chết
+(BAD END)
+
+B. CHỈ ĐỊNH NGƯỜI KHÁC
+→ Người đó bị thương
+→ HỌ THÙ HẬN MINH
+→ AUTHORITY -2
+
+C. MINH TỰ LÀM
+→ Minh bị thương
+→ TRUST +1
+→ Mai mang GUILT
+
+---
+
+CẢNH 4: HÀNH LANG GƯƠNG
+
+MỖI NGƯỜI THÚ NHẬN.
+
+MINH:
+
+* NÓI THẬT
+  → AUTHORITY +1
+
+* NÓI DỐI
+  → Gương nứt
+  → Quản Trò mỉm cười
+
+---
+
+CẢNH 5: PHÒNG BỎ PHIẾU
+
+QUẢN TRÒ:
+"4 PHIẾU TRẮNG – TẤT CẢ SỐNG"
+
+TUẤN & LAN:
+"GIẾT MAI ĐI"
+
+LỰA CHỌN:
+
+A. VIẾT TÊN MAI
+→ NORMAL END: GIỌT MỰC ĐEN
+
+B. NỘP GIẤY TRẮNG
+
+KIỂM TRA:
+
+* TRUST ≥ 1
+* AUTHORITY ≥ 1
+
+THẤT BẠI:
+→ NORMAL END: RẠN NỨT
+
+THÀNH CÔNG:
+→ CẢNH 6
+
+---
+
+CẢNH 6: ĐỐI MẶT QUẢN TRÒ (TRUE END)
+
+QUẢN TRÒ PHẠM LUẬT.
+Minh đưa bằng chứng.
+
+MINH:
+"MÀY MỚI LÀ KẺ PHẢN BỘI"
+
+Quản Trò hiện hình.
+Hòm phiếu cháy.
+
+==================================================
+III. KẾT THÚC
+
+BAD END:
+
+* Lạc lối
+* Ngạt khí
+
+NORMAL END:
+
+* Giọt mực đen
+* Rạn nứt
+
+TRUE END:
+
+* Bình minh
+
+CẢ NHÓM TỈNH LẠI LÚC 11:05
+KHÔNG AI VÔ TỘI
+NHƯNG KHÔNG AI BỊ BỎ LẠI
