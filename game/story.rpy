@@ -93,24 +93,49 @@ label start:
     "" "Phòng sinh hoạt CLB Tâm linh - 11:00 PM"
     
     "" "Ánh nến leo lét trong căn phòng tối tăm."
+    "" "Mùi hương trầm thoảng qua, hòa lẫn với mùi bụi của những cuốn sách cổ xưa."
     "" "Bốn người bạn ngồi quay quanh một tấm bảng Ouija cũ kỹ."
+    
+    "" "Căn phòng có một cảm giác kỳ lạ... như thể có ai đó đang quan sát họ."
     
     # TUẤN speaks
     show sora at left
     with dissolve
-    "TUẤN" "Tớ vẫn không tin được là chúng ta đang làm chuyện này. Nhỡ có con gì hiện ra thật thì sao?"
+    "TUẤN" "Tớ vẫn không tin được là chúng ta đang làm chuyện này."
+    "TUẤN" "Nhỡ có con gì hiện ra thật thì sao?"
     
     # LAN speaks
     show chie at right
     with dissolve
-    "LAN" "Thống kê cho thấy 99%% các nghi thức gọi hồn chỉ là ảo giác nhóm. Cứ xem như trải nghiệm tâm lý đi."
+    "LAN" "Thống kê cho thấy 99%% các nghi thức gọi hồn chỉ là ảo giác nhóm."
+    "LAN" "Cứ xem như trải nghiệm tâm lý đi."
+    
+    show sora frown
+    "TUẤN" "Cậu và cái kiểu nói chuyện khoa học đó..."
+    "TUẤN" "Không phải mọi thứ đều giải thích được bằng số liệu đâu!"
+    
+    show chie frown
+    "LAN" "Chính xác là mọi thứ ĐỀU có thể giải thích bằng khoa học."
+    "LAN" "Chỉ là chúng ta chưa tìm ra cách thôi."
     
     # MAI speaks
     hide sora
     with dissolve
     show nora at left
     with dissolve
+    "MAI" "Các cậu ơi... đừng cãi nhau nữa."
     "MAI" "Nhưng... từ lúc vào đây tớ đã thấy lạnh sống lưng rồi."
+    
+    show nora frown
+    "MAI" "Các cậu có thấy không? Cái bóng tối ở góc kia... nó như đang nhìn chúng ta."
+    
+    hide nora
+    hide chie
+    with dissolve
+    
+    "" "Tất cả quay lại nhìn góc phòng tối đó."
+    "" "Không có gì cả. Chỉ là bóng tối."
+    "" "Hay là... có?"
     
     # MINH speaks
     hide chie
@@ -118,10 +143,23 @@ label start:
     with dissolve
     show aoto at center
     with dissolve
-    "MINH" "Thôi nào. Chỉ là đọc vài câu cho vui thôi. Để tớ đọc câu cuối cùng nhé."
+    "MINH" "Thôi nào các cậu. Đừng dọa nhau nữa."
+    "MINH" "Chỉ là đọc vài câu cho vui thôi."
+    
+    show aoto smile
+    "MINH" "Hơn nữa, nếu có ma thật thì chúng ta có bốn người cơ mà!"
+    "MINH" "Để tớ đọc câu cuối cùng nhé."
+    
+    "" "Minh cầm tấm bảng Ouija lên, tay hơi run."
+    "" "Dù nói mạnh mồm, nhưng trong thâm tâm anh cũng hơi... lo lắng."
+    
+    "" "Anh hít một hơi thật sâu..."
     
     play sound "audio/chant.ogg"
     "" "Minh đọc câu niệm chú cuối cùng..."
+    
+    "" "Giọng anh vang vọng trong căn phòng tĩnh lặng."
+    "" "Những ngọn nến bắt đầu lung lay dữ dội."
     
     hide aoto
     with dissolve
@@ -136,7 +174,8 @@ label start:
     "" "Một cơn đau buốt nhói lên trong đầu cả bốn người."
     
     # Whispers - each character hears something different
-    "" "Những lời thì thầm vang lên..."
+    "" "Những lời thì thầm vang lên từ khắp nơi..."
+    "" "Mỗi người nghe thấy một điều khác nhau."
     pause 1.0
     
     play sound "audio/whisper.ogg"
@@ -148,6 +187,9 @@ label start:
     centered "{color=#ff0000}TUẤN nghe thấy:{/color}\n\"Là Mai. Nó đang giả vờ yếu đuối. Hãy cẩn thận.\""
     
     centered "{color=#ff0000}MAI nghe thấy:{/color}\n\"Bọn họ đang nghi ngờ ngươi. Ngươi sẽ bị bỏ lại.\""
+    
+    "" "Bốn người nhìn nhau, hoảng loạn."
+    "" "Mỗi người đều có một bí mật mà họ không dám nói ra."
     
     scene bg club_room
     with flash
@@ -174,14 +216,41 @@ label scene2_corridor:
     
     "" "Căn hành lang ẩm mốc, vách tường bong tróc."
     "" "Mùi mốc nồng nặc khiến cả nhóm khó thở."
+    "" "Những bóng đèn huỳnh quang nhấp nháy yếu ớt trên trần nhà."
+    
+    show nora frown at right
+    with dissolve
+    "MAI" "Chỗ này... tại sao nó lại giống trường của chúng ta thế?"
+    "MAI" "Nhưng mà... cũ hơn. Rất nhiều."
+    
+    show aoto at left
+    with dissolve
+    "MINH" "Không chỉ cũ. Nó như thể đã bị bỏ hoang hàng chục năm."
+    
+    hide nora
+    hide aoto
+    with dissolve
     
     show chie at right
     with dissolve
     "LAN" "Chúng ta cần thông tin. Nếu có kẻ mạo danh, phải có manh mối."
+    "LAN" "Nên tìm kiếm có hệ thống. Chia ra để kiểm tra nhiều nơi hơn."
     
     show sora at left
     with dissolve
     "TUẤN" "Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế."
+    
+    show chie frown
+    "LAN" "Sao cậu lại muốn đi với Mai?"
+    
+    show sora frown
+    "TUẤN" "Cô ấy yếu nhất. Ai đó phải bảo vệ cô ấy."
+    
+    show chie closed frown
+    "LAN" "Hay là cậu muốn giám sát cô ấy?"
+    
+    "" "Không khí bỗng trở nên căng thẳng."
+    "" "Lời thì thầm về Mai vẫn còn văng vẳng trong đầu Tuấn."
     
     "" "Minh phải đưa ra quyết định..."
     
@@ -211,12 +280,26 @@ label scene2_branch_a_library:
     "" "Minh và Lan bước vào thư viện tối tăm."
     "" "Ánh đèn pin rọi lên những giá sách bụi mờ."
     
+    "" "Không khí lạnh lẽ đến kỳ lạ."
+    "" "Những cuốn sách xếp ngăn nắp, như thể ai đó vừa sắp xếp lại."
+    
+    show chie closed frown
+    "LAN" "Kỳ lạ... Nếu nơi này bị bỏ hoang, sao sách vẫn ngăn nắp thế này?"
+    
+    show aoto frown
+    "MINH" "Có lẽ ai đó vẫn... sống ở đây?"
+    
+    "" "Một cơn gió lạnh thổi qua, khiến cả hai rùng mình."
+    
     play sound "audio/book_fall.ogg"
     
     "" "Một cuốn sách rơi xuống đất, trang giở sẵn."
+    "" "Không có ai ở gần. Cuốn sách tự rơi."
     
     show chie frown
     "LAN" "Minh, xem này!"
+    
+    "" "Lan nhặt cuốn sách lên, tay hơi run."
     
     "" "Đó là một trang nhật ký viết nguệch ngoạc:"
     
@@ -225,9 +308,14 @@ label scene2_branch_a_library:
     pause 3.0
     hide text
     
-    "LAN" "Thấy chưa? Mai đang lừa dối chúng ta! Đi thôi!"
+    show chie open
+    "LAN" "Thấy chưa? Đây là bằng chứng!"
+    "LAN" "Mai đang lừa dối chúng ta! Đi thôi!"
     
+    show aoto closed frown
     "" "{i}Minh cảm thấy có gì đó không đúng...{/i}"
+    "" "{i}Tại sao cuốn sách lại tự rơi xuống đúng lúc họ vào?{/i}"
+    "" "{i}Quá tiện lợi. Quá... có dựng ý.{/i}"
     
     menu:
         "Tin ngay và rời đi {color=#ff8866}(Vội vàng){/color}":
@@ -307,17 +395,40 @@ label scene2_branch_b_archive:
     "" "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
     "" "Giá tài liệu xếp chồng lên nhau một cách lộn xộn."
     
+    show nora frown
+    "MAI" "Nơi này... tớ có cảm giác kỳ lạ."
+    "MAI" "Như thể có ai đó vừa mới rời đi."
+    
+    show chie closed frown
+    "LAN" "Đừng tưởng tượng. Tập trung tìm manh mối."
+    
+    show sora frown
+    "TUẤN" "Tôi thấy có gì đó trên bàn kia..."
+    
+    "" "Cả nhóm tiến lại gần chiếc bàn làm việc cũ."
+    "" "Bụi bặm dày cộm, nhưng có vài tài liệu trông mới hơn."
+    
     play sound "audio/rumble.ogg"
     
     "" "Đột nhiên, căn phòng rung chuyển dữ dội!"
     "" "Trần nhà bắt đầu nứt ra, mảng tường rơi xuống!"
+    
+    show nora closed frown
+    "MAI" "AAAAHHH!!!"
+    
+    show sora open
+    "TUẤN" "Cẩn thận!"
+    
+    "" "Tuấn kéo Mai tránh một mảng vữa rơi xuống."
     
     show ghost_minion at center
     with dissolve
     
     play sound "audio/evil_laugh.ogg"
     
-    "HỒN MA TAY SAI" "Hahaha... Chọn nhanh lên! Các ngươi chỉ có 10 giây!"
+    "HỒN MA TAY SAI" "Hahaha... Thật vui!"
+    "HỒN MA TAY SAI" "Chọn nhanh lên! Các ngươi chỉ có 10 giây!"
+    "HỒN MA TAY SAI" "Chận quá... ta sẽ chôn sống các ngươi ở đây!"
     
     hide ghost_minion
     with dissolve
@@ -396,15 +507,30 @@ label scene2_reunite:
     with dissolve
     
     "" "Minh và Lan gặp lại Tuấn và Mai ở hành lang."
+    "" "Cả hai trông có vẻ mệt mỏi và lo lắng."
+    
+    show nora frown
+    "MAI" "Các cậu! Các cậu không sao chứ?"
+    "MAI" "Tớ lo quá... tớ cứ nghĩ có chuyện gì xảy ra với các cậu..."
     
     show sora frown
     "TUẤN" "Các cậu tìm được gì không?"
+    
+    "" "Giọng Tuấn lạnh nhạt hơn bình thường."
     
     # Tuấn is upset about being left behind
     $ game_state.trust -= 1  # "Mày bỏ tụi tao lại" - reduces trust
     
     show sora closed frown
     "TUẤN" "Mày bỏ tụi tao lại."
+    "TUẤN" "Nếu có chuyện gì xảy ra với Mai, mày tính sao?"
+    
+    show aoto frown
+    "MINH" "Tuấn, tớ..."
+    
+    "TUẤN" "Thôi, không cần giải thích. Đã qua rồi."
+    
+    "" "Nhưng ánh mắt Tuấn cho thấy anh không quên."
     
     if game_state.has_fake_evidence_note:
         "MINH" "Có... nhưng không phải bằng chứng. Là một lời cảnh báo."
@@ -423,18 +549,31 @@ label scene3_chemistry:
     
     "Phòng Hóa Học"
     
+    "" "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
+    "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
+    
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
     show sora at Position(xalign=0.65, yalign=1.0)
     show nora at right
     with dissolve
     
-    "" "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
-    "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
+    show chie frown
+    "LAN" "Phòng thí nghiệm hóa học... Nhưng trông không giống bình thường."
+    
+    "" "Những lọ hóa chất xếp ngổn ngang trên kệ."
+    "" "Một số đã đổ ra, ăn mòn mặt bàn."
+    
+    show nora closed frown
+    "MAI" "Tớ có cảm giác không hay..."
     
     "" "Giữa phòng có một chiếc hộp kính chứa dung dịch sủi bọt."
+    "" "Dung dịch màu xanh lục nhạt, bốc khói."
     "" "Bên trong có rết độc bò lổm ngổm."
     "" "Một chiếc chìa khóa vàng nằm dưới đáy."
+    
+    show sora frown
+    "TUẤN" "Chìa khóa... Chúng ta cần nó để ra ngoài?"
     
     play sound "audio/countdown.ogg"
     
@@ -445,17 +584,31 @@ label scene3_chemistry:
     
     "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Chọn vật hiến tế để lấy chìa khóa.{/size}"
     "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Hết giờ, phòng sẽ bơm khí độc.{/size}"
+    "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Thời gian: 60 GIÂY.{/size}"
     
-    show sora frown
+    show sora closed frown
     "TUẤN" "Cái quái gì vậy?! Ai dám thò tay vào đống axit đó?!"
     
     show chie closed frown
     "LAN" "Đ-đừng nhìn tôi! Tôi không làm đâu!"
+    "LAN" "Tay tôi... tôi cần chúng để làm thí nghiệm!"
     
     show nora frown
     "MAI" "Chúng ta... chúng ta phải làm sao đây?"
+    "MAI" "Nếu không lấy được chìa khóa, tất cả sẽ chết!"
+    
+    show sora frown
+    "TUẤN" "Thế thì sao không cậu làm đi, Mai?"
+    "TUẤN" "Cậu yếu nhất... cậu nên cống hiến một chút chứ!"
+    
+    show nora closed frown
+    "MAI" "T-Tuấn?! Cậu nói vậy là sao?!"
+    
+    show chie frown
+    "LAN" "Tuấn, bình tĩnh đi!"
     
     "" "Đồng hồ đếm ngược. 45 giây... 40 giây..."
+    "" "Không khí căng thẳng đến nghẹt thở."
     
     "" "{i}{color=#ffaa00}Thời gian đang cạn kiệt... Minh phải quyết định ngay!{/color}{/i}"
     
@@ -601,26 +754,41 @@ label scene4_truth_hallway:
     
     "Hành Lang Gương"
     
+    "" "Một hành lang dài đầy gương."
+    "" "Hàng trăm chiếc gương xếp dọc hai bên tường."
+    "" "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
+    
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
     show sora at Position(xalign=0.65, yalign=1.0)
     show nora at right
     with dissolve
     
-    "" "Một hành lang dài đầy gương."
-    "" "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
+    show nora closed frown
+    "MAI" "Sao... sao hình ảnh trong gương lại khác với chúng ta?"
+    
+    show aoto frown
+    "MINH" "Chúng đang cười... Nhưng chúng ta không cười."
     
     "GIỌNG NÓI QUẢN TRÒ" "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất."
+    "GIỌNG NÓI QUẢN TRÒ" "Những gì các ngươi giấu kín trong tâm hồn."
     "GIỌNG NÓI QUẢN TRÒ" "Nói dối, gương sẽ vỡ... và các ngươi sẽ chết."
+    
+    "" "Căn phòng im lặng đến rợn người."
     
     show chie frown
     "LAN" "Chúng ta... phải làm sao?"
+    "LAN" "Nói thật mọi bí mật? Điều đó... có khác gì tự hủy hoại mình."
     
     show sora closed frown
     "TUẤN" "Không có lựa chọn nào khác."
+    "TUẤN" "Hoặc chúng ta thật thà, hoặc chúng ta chết."
+    
+    "" "Một sự im lặng nặng nề bao trùm."
     
     # TUẤN's confession
-    "" "Tuấn bước lên trước, nhìn vào gương."
+    "" "Tuấn hít một hơi sâu, bước lên trước."
+    "" "Anh nhìn vào gương, đối diện với chính mình."
     
     show sora frown at center
     with move
@@ -631,41 +799,56 @@ label scene4_truth_hallway:
     
     "TUẤN" "Năm ngoái, tôi đã xóa email thông báo học bổng của cậu."
     "TUẤN" "Vì tôi ghen tị. Ghen tị với sự thông minh của cậu."
+    "TUẤN" "Cậu luôn giỏi hơn tôi mọi thứ. Tôi ghét điều đó."
     "TUẤN" "Tôi xin lỗi..."
     
     $ game_state.tuan_confession = "sabotaged Lan's scholarship"
     
+    show chie frown
+    "LAN" "Tuấn... cậu..."
+    "LAN" "Tôi đã mất cơ hội du học vì cậu!"
+    
+    "TUẤN" "Tôi biết. Và tôi hối hận mỗi ngày."
+    
     play sound "audio/mirror_accept.ogg"
     
     "" "Gương phát sáng xanh, chấp nhận sự thật."
+    "" "Tuấn thở phào nhẹ nhõm, nhưng khuôn mặt vẫn đầy tội lỗi."
     
     show sora at Position(xalign=0.65, yalign=1.0)
     with move
     
     # MAI's confession
-    "" "Mai run rẩy bước tới."
+    "" "Mai run rẩy, chân bước không vững."
+    "" "Cô tiến lên trước gương."
     
     show nora frown at center
     with move
+    "MAI" "Tớ... tớ có một bí mật."
     "MAI" "Tớ... tớ chỉ lợi dụng Tuấn."
     
     show sora closed frown
     "TUẤN" "...Mai?"
     
-    "MAI" "Tớ không thích cậu. Tớ chỉ giả vờ yếu đuối để cậu bảo vệ tớ."
+    "MAI" "Tớ không thích cậu. Chưa bao giờ."
+    "MAI" "Tớ chỉ giả vờ yếu đuối để cậu bảo vệ tớ."
+    "MAI" "Để tớ có người che chở. Để tớ không phải đối mặt mọi thứ một mình."
     "MAI" "Tớ... tớ xin lỗi, Tuấn."
+    
+    "TUẤN" "..."
     
     $ game_state.mai_confession = "used Tuấn for protection"
     
     play sound "audio/mirror_accept.ogg"
     
-    "" "Gương lại sáng lên."
+    "" "Gương lại sáng lên, chấp nhận lời thú tội."
     
     show nora at right
     with move
     
     # LAN's confession
     "" "Lan thở dài, bước ra."
+    "" "Cô nhìn thẳng vào gương, mặt lạnh lùng."
     
     show chie closed frown at center
     with move
@@ -674,21 +857,31 @@ label scene4_truth_hallway:
     show aoto frown
     "MINH" "Lan..."
     
-    "LAN" "Tôi nghiên cứu hành vi của các cậu. Tôi khinh thường trí tuệ của mọi người."
-    "LAN" "Tôi nghĩ mình thông minh hơn tất cả. Tôi... xin lỗi."
+    "LAN" "Tôi nghiên cứu hành vi của các cậu. Ghi chép lại phản ứng của các cậu."
+    "LAN" "Tôi khinh thường trí tuệ của mọi người."
+    "LAN" "Tôi nghĩ mình thông minh hơn tất cả."
+    
+    show chie frown
+    "LAN" "Nhưng... ở đây, tôi nhận ra..."
+    "LAN" "Sự thông minh chẳng có ý nghĩa gì nếu không có ai bên cạnh."
+    "LAN" "Tôi... xin lỗi."
     
     $ game_state.lan_confession = "looked down on everyone"
     
     play sound "audio/mirror_accept.ogg"
+    
+    "" "Gương sáng lên, chấp nhận sự thật của Lan."
     
     show chie at Position(xalign=0.35, yalign=1.0)
     with move
     
     # MINH's turn
     "" "Cuối cùng đến lượt Minh."
-    "" "Tất cả nhìn anh."
+    "" "Tất cả nhìn anh, chờ đợi."
+    "" "Gương trước mặt anh sáng lên nhẹ, như đang sẵn sàng phán xét."
     
     "" "{i}Minh hít một hơi thật sâu. Đã đến lúc phải đối mặt với chính mình...{/i}"
+    "" "{i}Anh phải thú nhận điều gì?{/i}"
     
     menu:
         "{color=#ff8866}Sự hèn nhát{/color} - \"Tớ muốn bỏ mặc các cậu\"":
@@ -740,16 +933,27 @@ label scene5_voting_room:
     
     "Căn Phòng Trắng"
     
+    "" "Một căn phòng trắng toát."
+    "" "Không có cửa sổ, không có bóng tối, không có góc khuất."
+    "" "Chỉ có sự trắng tinh tối, bao quát mọi thứ."
+    
     show aoto at left
     show chie at Position(xalign=0.35, yalign=1.0)
     show sora at Position(xalign=0.65, yalign=1.0)
     show nora at right
     with dissolve
     
-    "" "Một căn phòng trắng toát."
     "" "Giữa phòng là một chiếc hòm phiếu đen như mực."
+    "" "Nó tương phản kỳ lạ với căn phòng trắng xung quanh."
+    
+    show nora frown
+    "MAI" "Cái hòm đó... trông như quan tài."
+    
+    show sora frown
+    "TUẤN" "Đừng nói xui quẩy!"
     
     "" "Bốn tờ giấy trắng và bốn cây bút đen xuất hiện trước mặt mỗi người."
+    "" "Chúng bay lơ lửng trong không khí, chờ đợi."
     
     play sound "audio/gamemaster_voice.ogg"
     
@@ -757,6 +961,8 @@ label scene5_voting_room:
     "GIỌNG NÓI QUẢN TRÒ" "Viết tên KẺ PHẢN BỘI vào giấy."
     "GIỌNG NÓI QUẢN TRÒ" "Nếu cả 4 tờ đều TRẮNG: Tất cả sống."
     "GIỌNG NÓI QUẢN TRÒ" "Nếu có TÊN: Người có nhiều phiếu nhất chết, 3 người còn lại về."
+    
+    "" "Một sự im lặng nặng nề bao trùm."
     
     scene bg white_room
     
@@ -766,9 +972,29 @@ label scene5_voting_room:
     show nora frown at right
     with dissolve
     
-    "Không khí căng thẳng đến tột độ."
+    "" "Không khí căng thẳng đến tột độ."
+    "" "Mỗi người nhìn nhau, rồi lại nhìn xuống tờ giấy trước mặt."
+    
+    show chie closed frown
+    "LAN" "Nếu cả bốn tờ đều trắng... tất cả sống."
+    "LAN" "Nhưng nếu chỉ một người viết tên..."
+    
+    show sora closed frown
+    "TUẤN" "Thì người bị viết tên sẽ chết."
+    "TUẤN" "Và ba người còn lại sẽ thoát."
+    
+    show nora closed frown
+    "MAI" "Các cậu sẽ không viết tên tớ chứ?"
+    "MAI" "Chúng ta đã hứa... tin tưởng nhau mà..."
+    
+    "" "Nhưng những lời thì thầm từ đầu trò chơi vẫn còn văng vẳng."
+    "" "Mỗi người đều đã nghe thấy điều gì đó khác nhau."
+    "" "Ai là kẻ mạo danh? Hay thực sự chẳng có ai?"
     
     if game_state.tuan_injury or game_state.lan_injury:
+        "" "Vết thương từ phòng Hóa Học vẫn còn rát buốt."
+        "" "Nỗi oán hận bắt đầu tràn ra."
+        
         show sora closed frown
         "TUẤN" "Chúng ta... chúng ta phải hy sinh một người."
         
@@ -946,11 +1172,20 @@ label scene6_confrontation:
     
     play music "audio/boss_theme.ogg"
     
+    "" "Một bóng đen khổng lồ hiện ra từ hư không."
+    "" "Khuôn mặt không rõ ràng, chỉ có nụ cười rộng đến tai."
+    
     "QUẢN TRÒ" "{size=+20}{color=#ff0000}LŨ NGU NGỐC!{/color}{/size}"
+    "QUẢN TRÒ" "Ta đã cho các ngươi cơ hội tìm ra kẻ mạo danh!"
+    "QUẢN TRÒ" "Nhưng các ngươi lại chọn... tin tưởng nhau?"
+    
+    "" "Tiếng cười vang vọng khắp căn phòng."
+    
     "QUẢN TRÒ" "Giấy trắng nghĩa là KHÔNG TÌM RA AI!"
     "QUẢN TRÒ" "TẤT CẢ PHẠM LUẬT! CHẾT ĐI!!!"
     
-    "Bóng tối bắt đầu bao trùm..."
+    "" "Bóng tối bắt đầu bò ra từ góc phòng."
+    "" "Nó cuộn lại, sẵn sàng nuốt chửng cả nhóm."
     
     # Check for key items
     if game_state.has_fake_evidence_note:
@@ -967,18 +1202,30 @@ label true_end_path_1:
     show nora at right
     with dissolve
     
+    "" "Bóng tối đang tiến lại gần."
+    "" "Mọi người lùi lại, sợ hãi."
+    
+    "" "Nhưng Minh bước lên phía trước."
+    
     show aoto open
     "MINH" "KHOAN!"
     
-    "" "Bóng tối dừng lại."
+    "" "Giọng anh vang lên mạnh mẽ, đầy quyết tâm."
+    "" "Bóng tối dừng lại, như thể đang ngạc nhiên."
+    
+    "QUẢN TRÒ" "Hmm? Ngươi còn muốn nói gì?"
     
     "MINH" "Trong chúng tôi không ai là kẻ mạo danh!"
+    "MINH" "Tất cả bằng chứng đều là giả!"
     
-    "QUẢN TRÒ" "Vậy thì sao?!"
+    "QUẢN TRÒ" "Vậy thì sao?! Các ngươi vẫn phạm luật!"
     
+    "MINH" "Không!"
     "MINH" "Vậy thì chỉ còn một đáp án..."
     
     "" "Minh rút mảnh giấy cảnh báo ra."
+    "" "Mảnh giấy mà anh đã tìm được trong thư viện."
+    "" "Nó phát ra ánh sáng nhẹ trong tay anh."
     
     "MINH" "{size=+15}NGƯƠI MỚI LÀ KẺ MẠO DANH, QUẢN TRÒ!{/size}"
     
@@ -1003,30 +1250,44 @@ label true_end_path_2:
     show nora at right
     with dissolve
     
+    "" "Bóng tối đang tiến lại gần, sẵn sàng nuốt chửng mọi người."
+    "" "Nhưng Minh không hề sợ hãi."
+    
     show aoto open
     "MINH" "Mày định dọa ai?"
     
-    "Minh giơ tập giấy ghi chú cũ nát lên."
+    "" "Minh giơ tập giấy ghi chú cũ nát lên."
+    "" "Nó phát ra ánh sáng vàng nhạt, đẩy lùi bóng tối."
     
     "MINH" "Tao đã đọc bản dịch GỐC của nghi thức này rồi!"
     
-    "QUẢN TRÒ" "Cái gì...?!"
+    "QUẢN TRÒ" "Cái gì...?! Làm sao ngươi có được...?!"
     
     "MINH" "Mày nói bọn tao phạm luật? SAI!"
     "MINH" "Luật nói: 'Kẻ thua cuộc phải chết'."
     "MINH" "Nhưng khi cả 4 tờ đều trắng, KHÔNG AI THUA!"
     
+    "" "Quản Trò lùi lại, vẻ mặt bắt đầu hoảng loạn."
+    
     show chie open
+    "LAN" "Đợi đã... Tôi hiểu rồi!"
     "LAN" "Nếu không có người chơi nào thua..."
     "LAN" "...thì kẻ duy nhất thất bại trong việc duy trì trò chơi..."
     "LAN" "...là MÀY - QUẢN TRÒ!"
     
+    show nora open
+    "MAI" "Hắn là người chơi thứ 5! Giả làm trọng tài!"
+    
     show aoto smile
     "MINH" "Quy tắc thứ 13: Khi Quản Trò thất bại, hắn sẽ mất quyền năng!"
     "MINH" "Mày không phải thần thánh. Mày chỉ là KÝ SINH TRÙNG!"
+    "MINH" "Sống dựa vào nỗi sợ của chúng tao!"
     
     show sora smile
     "TUẤN" "Và giờ bọn tao sẽ nghiền nát mày!"
+    
+    "" "Cả bốn người cùng đứng lên, đối mặt với Quản Trò."
+    "" "Sự đoàn kết của họ tạo thành một bức tường vô hình."
     
     play sound "audio/paper_write.ogg"
     
