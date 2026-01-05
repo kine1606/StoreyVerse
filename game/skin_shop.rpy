@@ -8,7 +8,7 @@
 # ============================================
 
 default persistent.shop_coins = 500
-default persistent.shop_unlocked_skins = ["minh_casual", "lan_casual", "tuan_casual", "mai_casual"]
+default persistent.shop_unlocked_skins = ["chie_casual", "nora_casual"]
 default persistent.shop_equipped_skins = {}
 
 # ============================================
@@ -46,7 +46,7 @@ init python:
         """Manages the skin shop inventory"""
         def __init__(self):
             self.skins = {}  # id -> SkinItem
-            self.categories = ["All", "Minh", "Lan", "Tuấn", "Mai"]
+            self.categories = ["All", "Chie", "Nora"]
             self.current_category = "All"
         
         def add_skin(self, skin):
@@ -117,83 +117,48 @@ init python:
         
         # ============================================
         # DEFAULT SKINS (Free/Unlocked by default)
+        # Located in: images/Casual/{character}/
         # ============================================
         
         skin_shop.add_skin(SkinItem(
-            id="minh_casual",
+            id="chie_casual",
             name="Casual Outfit",
-            character="Minh",
+            character="Chie",
             price=0,
-            description="Minh's default casual outfit.",
-            preview_image=None
+            description="Chie's default casual outfit.",
+            preview_image="images/Casual/chie/chie casual smile.png"
         ))
         
         skin_shop.add_skin(SkinItem(
-            id="lan_casual",
+            id="nora_casual",
             name="Casual Outfit", 
-            character="Lan",
+            character="Nora",
             price=0,
-            description="Lan's default casual outfit.",
-            preview_image=None
-        ))
-        
-        skin_shop.add_skin(SkinItem(
-            id="tuan_casual",
-            name="Casual Outfit",
-            character="Tuấn",
-            price=0,
-            description="Tuấn's default casual outfit.",
-            preview_image=None
-        ))
-        
-        skin_shop.add_skin(SkinItem(
-            id="mai_casual",
-            name="Casual Outfit",
-            character="Mai",
-            price=0,
-            description="Mai's default casual outfit.",
-            preview_image=None
+            description="Nora's default casual outfit.",
+            preview_image="images/Casual/nora/nora casual smile.png"
         ))
         
         # ============================================
         # PREMIUM SKINS (Purchasable)
-        # Add your custom skins here!
+        # Located in: images/skin/{character}/
         # ============================================
         
         skin_shop.add_skin(SkinItem(
-            id="minh_formal",
-            name="Formal Suit",
-            character="Minh",
-            price=100,
-            description="A stylish formal suit for Minh.",
-            preview_image=None
-        ))
-        
-        skin_shop.add_skin(SkinItem(
-            id="lan_summer",
-            name="Summer Dress",
-            character="Lan",
+            id="chie_gym",
+            name="Gym Outfit",
+            character="Chie",
             price=150,
-            description="A beautiful summer dress for Lan.",
-            preview_image=None
+            description="Athletic gym wear for Chie.",
+            preview_image="images/skin/chie/chie gym smile.png"
         ))
         
         skin_shop.add_skin(SkinItem(
-            id="tuan_sports",
-            name="Sports Outfit",
-            character="Tuấn",
-            price=120,
-            description="Athletic sports wear for Tuấn.",
-            preview_image=None
-        ))
-        
-        skin_shop.add_skin(SkinItem(
-            id="mai_winter",
-            name="Winter Coat",
-            character="Mai",
+            id="nora_summeruni",
+            name="Summer Uniform",
+            character="Nora",
             price=180,
-            description="A warm winter coat for Mai.",
-            preview_image=None
+            description="A summer school uniform for Nora.",
+            preview_image="images/skin/nora/nora summeruni smile.png"
         ))
     
     # Initialize shop at game start
@@ -302,7 +267,7 @@ screen skin_shop_screen():
                     xalign 0.5
                     spacing 8
                     
-                    for cat in ["All", "Minh", "Lan", "Tuấn", "Mai"]:
+                    for cat in ["All", "Chie", "Nora"]:
                         textbutton cat:
                             style "shop_tab_button"
                             action SetVariable("shop_current_category", cat)
@@ -333,8 +298,8 @@ screen skin_shop_screen():
                     xfill True
                     ysize 460
                     
-                    vbox:
-                        spacing 12
+                    hbox:
+                        spacing 15
                         xalign 0.5
                         
                         python:
@@ -343,68 +308,48 @@ screen skin_shop_screen():
                         for skin in current_skins:
                             # Vertical card for each item
                             frame:
-                                xsize 380
-                                ysize 100
+                                xsize 90
+                                ysize 180
                                 xalign 0.5
                                 background "#2d2d44"
-                                padding (10, 10)
+                                padding (5, 5)
                                 
-                                hbox:
-                                    spacing 15
-                                    yalign 0.5
+                                vbox:
+                                    spacing 8
+                                    xalign 0.5
                                     
-                                    # Skin preview (left side of card)
+                                    # Skin preview (top) - Light pink background
                                     frame:
-                                        xsize 70
-                                        ysize 70
-                                        background "#3d3d5c"
+                                        xsize 80
+                                        ysize 100
+                                        xalign 0.5
+                                        background "#FFB6C1"  # Light pink
                                         
                                         if skin.preview_image:
-                                            add skin.preview_image xalign 0.5 yalign 0.5 fit "contain"
+                                            add skin.preview_image xalign 0.5 yalign 1.0 zoom 0.15
                                         else:
-                                            text "👤" size 35 xalign 0.5 yalign 0.5
+                                            text "👤" size 40 xalign 0.5 yalign 0.5 color "#333333"
                                     
-                                    # Info section (middle)
-                                    vbox:
-                                        yalign 0.5
-                                        spacing 5
-                                        xsize 150
-                                        
-                                        text skin.name size 16 color "#FFFFFF"
-                                        text skin.character size 13 color "#888888"
-                                        
-                                        # Price display
-                                        if skin.unlocked:
-                                            text "Owned" size 12 color "#22c55e"
-                                        else:
-                                            hbox:
-                                                spacing 5
-                                                text "🪙" size 14 yalign 0.5
-                                                text "[skin.price]" size 14 color "#FFD700" yalign 0.5
+                                    # Skin name (middle)
+                                    text skin.name size 11 color "#FFFFFF" xalign 0.5 text_align 0.5
                                     
-                                    # Action button (right side)
-                                    vbox:
-                                        xalign 1.0
-                                        yalign 0.5
-                                        
-                                        if skin.unlocked:
-                                            if skin_shop.is_equipped(skin.id):
-                                                textbutton "Equipped":
-                                                    style "shop_equipped_button"
-                                                    action NullAction()
-                                            else:
-                                                textbutton "Equip":
-                                                    style "shop_equip_button"
-                                                    action Function(skin_shop.equip_skin, skin.id)
+                                    # Price (bottom)
+                                    if skin.unlocked:
+                                        if skin_shop.is_equipped(skin.id):
+                                            text "✓" size 14 color "#22c55e" xalign 0.5
                                         else:
-                                            if skin.can_purchase():
-                                                textbutton "Buy":
-                                                    style "shop_buy_button"
-                                                    action Function(skin.purchase)
-                                            else:
-                                                textbutton "Locked":
-                                                    style "shop_locked_button"
-                                                    action NullAction()
+                                            textbutton "Equip":
+                                                style "shop_card_button"
+                                                xalign 0.5
+                                                action Function(skin_shop.equip_skin, skin.id)
+                                    else:
+                                        if skin.can_purchase():
+                                            textbutton "🪙[skin.price]":
+                                                style "shop_card_buy_button"
+                                                xalign 0.5
+                                                action Function(skin.purchase)
+                                        else:
+                                            text "🪙[skin.price]" size 12 color "#9ca3af" xalign 0.5
 
 # ============================================
 # SHOP STYLES
@@ -463,6 +408,28 @@ style shop_locked_button:
 style shop_locked_button_text:
     size 14
     color "#9ca3af"
+    xalign 0.5
+
+style shop_card_button:
+    background "#3b82f6"
+    hover_background "#2563eb"
+    padding (8, 4)
+    xminimum 60
+
+style shop_card_button_text:
+    size 10
+    color "#FFFFFF"
+    xalign 0.5
+
+style shop_card_buy_button:
+    background "#22c55e"
+    hover_background "#16a34a"
+    padding (8, 4)
+    xminimum 60
+
+style shop_card_buy_button_text:
+    size 10
+    color "#FFFFFF"
     xalign 0.5
 
 style shop_back_button:
