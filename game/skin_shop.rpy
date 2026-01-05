@@ -102,6 +102,43 @@ init python:
             if skin:
                 return persistent.shop_equipped_skins.get(skin.character) == skin_id
             return False
+        
+        def get_skin_image_path(self, character, expression):
+            """
+            Get the image path for a character with current equipped skin.
+            character: 'Chie' or 'Nora'
+            expression: 'smile', 'frown', 'open', 'closed smile', 'closed frown', 'closed open'
+            Returns the full image path string.
+            """
+            skin_id = persistent.shop_equipped_skins.get(character)
+            
+            # Mapping of skin_id to folder/prefix
+            skin_paths = {
+                # Default casual skins
+                "chie_casual": ("images/Casual/chie", "chie casual"),
+                "nora_casual": ("images/Casual/nora", "nora casual"),
+                # Premium skins
+                "chie_gym": ("images/skin/chie", "chie gym"),
+                "nora_summeruni": ("images/skin/nora", "nora summeruni"),
+            }
+            
+            # Get default skin if none equipped
+            if not skin_id:
+                if character == "Chie":
+                    skin_id = "chie_casual"
+                elif character == "Nora":
+                    skin_id = "nora_casual"
+            
+            if skin_id in skin_paths:
+                folder, prefix = skin_paths[skin_id]
+                return "{}/{} {}.png".format(folder, prefix, expression)
+            
+            # Fallback to casual
+            if character == "Chie":
+                return "images/Casual/chie/chie casual {}.png".format(expression)
+            elif character == "Nora":
+                return "images/Casual/nora/nora casual {}.png".format(expression)
+            return None
 
 # ============================================
 # INITIALIZE SHOP
@@ -333,12 +370,9 @@ screen skin_shop_screen():
                                                 background "#FFB6C1"  # Light pink
                                                 
                                                 if skin.preview_image:
-                                                    # Crop container to cut off head, show body/outfit only
-                                                    fixed:
-                                                        xsize 160
-                                                        ysize 180
-                                                        # Position image so head is cropped off (yoffset negative pushes image up)
-                                                        add skin.preview_image xalign 0.5 yalign 1.0 yoffset 50 zoom 0.35
+                                                    # Crop the image to show only body (cut off head)
+                                                    # Crop(x, y, width, height) - start from y=300 to skip head
+                                                    add Crop((0, 300, 600, 700), skin.preview_image) xalign 0.5 yalign 0.5 zoom 0.25
                                                 else:
                                                     text "👤" size 60 xalign 0.5 yalign 0.5 color "#333333"
                                             

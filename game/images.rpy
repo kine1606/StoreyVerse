@@ -42,14 +42,51 @@ image aoto closed smile = "images/Casual/aoto/aoto casual glasses closed smile.p
 image aoto closed open = "images/Casual/aoto/aoto casual glasses closed open.png"
 image aoto closed frown = "images/Casual/aoto/aoto casual glasses closed frown.png"
 
-# Character sprites - LAN (chie)
-image chie = "images/Casual/chie/chie casual smile.png"
-image chie smile = "images/Casual/chie/chie casual smile.png"
-image chie open = "images/Casual/chie/chie casual open.png"
-image chie frown = "images/Casual/chie/chie casual frown.png"
-image chie closed smile = "images/Casual/chie/chie casual closed smile.png"
-image chie closed open = "images/Casual/chie/chie casual closed open.png"
-image chie closed frown = "images/Casual/chie/chie casual closed frown.png"
+# Character sprites - LAN (chie) - Dynamic based on equipped skin
+init python:
+    def get_chie_image(expression="smile"):
+        """Get Chie's image path based on equipped skin"""
+        skin_id = persistent.shop_equipped_skins.get("Chie")
+        if skin_id == "chie_gym":
+            return "images/skin/chie/chie gym {}.png".format(expression)
+        return "images/Casual/chie/chie casual {}.png".format(expression)
+    
+    def get_nora_image(expression="smile"):
+        """Get Nora's image path based on equipped skin"""
+        skin_id = persistent.shop_equipped_skins.get("Nora")
+        if skin_id == "nora_summeruni":
+            return "images/skin/nora/nora summeruni {}.png".format(expression)
+        return "images/Casual/nora/nora casual {}.png".format(expression)
+
+# Dynamic character images for Chie (uses equipped skin)
+image chie = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym smile.png",
+    "True", "images/Casual/chie/chie casual smile.png"
+)
+image chie smile = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym smile.png",
+    "True", "images/Casual/chie/chie casual smile.png"
+)
+image chie open = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym open.png",
+    "True", "images/Casual/chie/chie casual open.png"
+)
+image chie frown = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym frown.png",
+    "True", "images/Casual/chie/chie casual frown.png"
+)
+image chie closed smile = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym closed smile.png",
+    "True", "images/Casual/chie/chie casual closed smile.png"
+)
+image chie closed open = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym closed open.png",
+    "True", "images/Casual/chie/chie casual closed open.png"
+)
+image chie closed frown = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Chie') == 'chie_gym'", "images/skin/chie/chie gym closed frown.png",
+    "True", "images/Casual/chie/chie casual closed frown.png"
+)
 
 # Character sprites - TUAN (sora)
 image sora = "images/Casual/sora/sora casual smile.png"
@@ -60,14 +97,35 @@ image sora closed smile = "images/Casual/sora/sora casual closed smile.png"
 image sora closed open = "images/Casual/sora/sora casual closed open.png"
 image sora closed frown = "images/Casual/sora/sora casual closed frown.png"
 
-# Character sprites - MAI (nora)
-image nora = "images/Casual/nora/nora casual smile.png"
-image nora smile = "images/Casual/nora/nora casual smile.png"
-image nora open = "images/Casual/nora/nora casual open.png"
-image nora frown = "images/Casual/nora/nora casual frown.png"
-image nora closed smile = "images/Casual/nora/nora casual closed smile.png"
-image nora closed open = "images/Casual/nora/nora casual closed open.png"
-image nora closed frown = "images/Casual/nora/nora casual closed frown.png"
+# Dynamic character images for Nora (uses equipped skin)
+image nora = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni smile.png",
+    "True", "images/Casual/nora/nora casual smile.png"
+)
+image nora smile = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni smile.png",
+    "True", "images/Casual/nora/nora casual smile.png"
+)
+image nora open = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni open.png",
+    "True", "images/Casual/nora/nora casual open.png"
+)
+image nora frown = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni frown.png",
+    "True", "images/Casual/nora/nora casual frown.png"
+)
+image nora closed smile = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni closed smile.png",
+    "True", "images/Casual/nora/nora casual closed smile.png"
+)
+image nora closed open = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni closed open.png",
+    "True", "images/Casual/nora/nora casual closed open.png"
+)
+image nora closed frown = ConditionSwitch(
+    "persistent.shop_equipped_skins.get('Nora') == 'nora_summeruni'", "images/skin/nora/nora summeruni closed frown.png",
+    "True", "images/Casual/nora/nora casual closed frown.png"
+)
 
 # Special effects
 image gamemaster = "#ff0000"  # Placeholder for gamemaster sprite
