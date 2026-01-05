@@ -291,65 +291,77 @@ screen skin_shop_screen():
                 
                 null height 5
                 
-                # Items list with scrollbar (max 4 visible)
+                # Items list with scrollbar - 2 skins per row
                 viewport:
                     scrollbars "vertical"
                     mousewheel True
                     xfill True
                     ysize 460
                     
-                    hbox:
+                    vbox:
                         spacing 15
                         xalign 0.5
                         
                         python:
                             current_skins = skin_shop.get_skins_by_category(shop_current_category)
+                            # Split into rows of 2
+                            skin_rows = [current_skins[i:i+2] for i in range(0, len(current_skins), 2)]
                         
-                        for skin in current_skins:
-                            # Vertical card for each item
-                            frame:
-                                xsize 90
-                                ysize 180
+                        for row in skin_rows:
+                            hbox:
+                                spacing 20
                                 xalign 0.5
-                                background "#2d2d44"
-                                padding (5, 5)
                                 
-                                vbox:
-                                    spacing 8
-                                    xalign 0.5
-                                    
-                                    # Skin preview (top) - Light pink background
+                                for skin in row:
+                                    # Vertical card for each item - larger size
                                     frame:
-                                        xsize 80
-                                        ysize 100
+                                        xsize 180
+                                        ysize 280
                                         xalign 0.5
-                                        background "#FFB6C1"  # Light pink
+                                        background "#2d2d44"
+                                        padding (10, 10)
                                         
-                                        if skin.preview_image:
-                                            add skin.preview_image xalign 0.5 yalign 1.0 zoom 0.15
-                                        else:
-                                            text "👤" size 40 xalign 0.5 yalign 0.5 color "#333333"
-                                    
-                                    # Skin name (middle)
-                                    text skin.name size 11 color "#FFFFFF" xalign 0.5 text_align 0.5
-                                    
-                                    # Price (bottom)
-                                    if skin.unlocked:
-                                        if skin_shop.is_equipped(skin.id):
-                                            text "✓" size 14 color "#22c55e" xalign 0.5
-                                        else:
-                                            textbutton "Equip":
-                                                style "shop_card_button"
+                                        vbox:
+                                            spacing 10
+                                            xalign 0.5
+                                            
+                                            # Skin preview (top) - Light pink background, cropped to show body only
+                                            frame:
+                                                xsize 160
+                                                ysize 180
                                                 xalign 0.5
-                                                action Function(skin_shop.equip_skin, skin.id)
-                                    else:
-                                        if skin.can_purchase():
-                                            textbutton "🪙[skin.price]":
-                                                style "shop_card_buy_button"
-                                                xalign 0.5
-                                                action Function(skin.purchase)
-                                        else:
-                                            text "🪙[skin.price]" size 12 color "#9ca3af" xalign 0.5
+                                                background "#FFB6C1"  # Light pink
+                                                
+                                                if skin.preview_image:
+                                                    # Crop container to cut off head, show body/outfit only
+                                                    fixed:
+                                                        xsize 160
+                                                        ysize 180
+                                                        # Position image so head is cropped off (yoffset negative pushes image up)
+                                                        add skin.preview_image xalign 0.5 yalign 1.0 yoffset 50 zoom 0.35
+                                                else:
+                                                    text "👤" size 60 xalign 0.5 yalign 0.5 color "#333333"
+                                            
+                                            # Skin name (middle)
+                                            text skin.name size 16 color "#FFFFFF" xalign 0.5 text_align 0.5
+                                            
+                                            # Price (bottom)
+                                            if skin.unlocked:
+                                                if skin_shop.is_equipped(skin.id):
+                                                    text "✓ Equipped" size 16 color "#22c55e" xalign 0.5
+                                                else:
+                                                    textbutton "Equip":
+                                                        style "shop_card_button"
+                                                        xalign 0.5
+                                                        action Function(skin_shop.equip_skin, skin.id)
+                                            else:
+                                                if skin.can_purchase():
+                                                    textbutton "🪙[skin.price]":
+                                                        style "shop_card_buy_button"
+                                                        xalign 0.5
+                                                        action Function(skin.purchase)
+                                                else:
+                                                    text "🪙[skin.price]" size 14 color "#9ca3af" xalign 0.5
 
 # ============================================
 # SHOP STYLES
