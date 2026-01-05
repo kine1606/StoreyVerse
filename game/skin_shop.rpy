@@ -239,127 +239,172 @@ screen skin_shop_screen():
     add "gui/main_menu_background.png"
     
     # Dark overlay
-    add Solid("#000000AA")
+    add Solid("#000000CC")
     
+    # Back button - Top Left
+    textbutton "← Back":
+        style "shop_back_button"
+        xpos 20
+        ypos 20
+        action Return()
+    
+    # Coins display - Top Right
     frame:
-        xalign 0.5
-        yalign 0.5
-        xsize 1000
-        ysize 650
-        background "#1a1a2e"
-        padding (20, 20)
+        xalign 1.0
+        ypos 20
+        xoffset -20
+        background "#2d2d44"
+        padding (15, 10)
         
-        vbox:
-            spacing 15
+        hbox:
+            spacing 10
+            text "🪙" size 24 yalign 0.5
+            text "[persistent.shop_coins]" size 22 color "#FFD700" yalign 0.5
+    
+    # Main container - Split into 2 halves
+    hbox:
+        xalign 0.5
+        yalign 0.55
+        spacing 40
+        
+        # LEFT HALF - Shop Owner
+        frame:
+            xsize 450
+            ysize 550
+            background "#1a1a2e"
+            padding (20, 20)
             
-            # Header with title and coins
-            hbox:
-                xfill True
-                
-                text "🛍️ Skin Shop" size 36 color "#FFFFFF" yalign 0.5
-                
-                hbox:
-                    xalign 1.0
-                    spacing 10
-                    
-                    text "🪙" size 28 yalign 0.5
-                    text "[persistent.shop_coins]" size 24 color "#FFD700" yalign 0.5
-            
-            # Separator line
-            add Solid("#444444") xsize 960 ysize 2
-            
-            # Category tabs
-            hbox:
+            vbox:
                 xalign 0.5
+                yalign 0.5
+                spacing 20
+                
+                # Shop owner placeholder
+                frame:
+                    xsize 350
+                    ysize 400
+                    xalign 0.5
+                    background "#2d2d44"
+                    
+                    vbox:
+                        xalign 0.5
+                        yalign 0.5
+                        spacing 10
+                        
+                        text "🧑‍💼" size 120 xalign 0.5
+                        text "Shop Owner" size 24 color "#FFFFFF" xalign 0.5
+                
+                # Shop title
+                text "🛍️ Skin Shop" size 28 color "#FFFFFF" xalign 0.5
+                
+                # Category tabs
+                hbox:
+                    xalign 0.5
+                    spacing 8
+                    
+                    for cat in ["All", "Minh", "Lan", "Tuấn", "Mai"]:
+                        textbutton cat:
+                            style "shop_tab_button"
+                            action SetVariable("shop_current_category", cat)
+                            selected shop_current_category == cat
+        
+        # RIGHT HALF - Items List
+        frame:
+            xsize 450
+            ysize 550
+            background "#1a1a2e"
+            padding (20, 20)
+            
+            vbox:
                 spacing 15
                 
-                for cat in ["All", "Minh", "Lan", "Tuấn", "Mai"]:
-                    textbutton cat:
-                        style "shop_tab_button"
-                        action SetVariable("shop_current_category", cat)
-                        selected shop_current_category == cat
-            
-            null height 10
-            
-            # Skin grid with scrolling
-            viewport:
-                scrollbars "vertical"
-                mousewheel True
-                xfill True
-                ysize 420
+                # Title
+                text "Available Items" size 22 color "#FFFFFF" xalign 0.5
                 
-                vbox:
-                    spacing 15
+                # Separator
+                add Solid("#444444") xsize 410 ysize 2 xalign 0.5
+                
+                null height 5
+                
+                # Items list with scrollbar (max 4 visible)
+                viewport:
+                    scrollbars "vertical"
+                    mousewheel True
+                    xfill True
+                    ysize 460
                     
-                    # Create rows of 4 skins each
-                    python:
-                        current_skins = skin_shop.get_skins_by_category(shop_current_category)
-                    
-                    hbox:
-                        spacing 15
+                    vbox:
+                        spacing 12
                         xalign 0.5
                         
+                        python:
+                            current_skins = skin_shop.get_skins_by_category(shop_current_category)
+                        
                         for skin in current_skins:
+                            # Vertical card for each item
                             frame:
-                                xsize 220
-                                ysize 300
+                                xsize 380
+                                ysize 100
+                                xalign 0.5
                                 background "#2d2d44"
                                 padding (10, 10)
                                 
-                                vbox:
-                                    spacing 8
+                                hbox:
+                                    spacing 15
+                                    yalign 0.5
                                     
-                                    # Preview area
+                                    # Skin preview (left side of card)
                                     frame:
-                                        xsize 200
-                                        ysize 150
-                                        xalign 0.5
+                                        xsize 70
+                                        ysize 70
                                         background "#3d3d5c"
                                         
                                         if skin.preview_image:
                                             add skin.preview_image xalign 0.5 yalign 0.5 fit "contain"
                                         else:
-                                            vbox:
-                                                xalign 0.5
-                                                yalign 0.5
-                                                text "👤" size 50 xalign 0.5
-                                                text "No Preview" size 12 color "#888888" xalign 0.5
+                                            text "👤" size 35 xalign 0.5 yalign 0.5
                                     
-                                    # Skin info
-                                    text skin.name size 16 color "#FFFFFF" xalign 0.5
-                                    text skin.character size 12 color "#888888" xalign 0.5
+                                    # Info section (middle)
+                                    vbox:
+                                        yalign 0.5
+                                        spacing 5
+                                        xsize 150
+                                        
+                                        text skin.name size 16 color "#FFFFFF"
+                                        text skin.character size 13 color "#888888"
+                                        
+                                        # Price display
+                                        if skin.unlocked:
+                                            text "Owned" size 12 color "#22c55e"
+                                        else:
+                                            hbox:
+                                                spacing 5
+                                                text "🪙" size 14 yalign 0.5
+                                                text "[skin.price]" size 14 color "#FFD700" yalign 0.5
                                     
-                                    # Action button
-                                    if skin.unlocked:
-                                        if skin_shop.is_equipped(skin.id):
-                                            textbutton "✓ Equipped":
-                                                style "shop_equipped_button"
-                                                xalign 0.5
-                                                action NullAction()
+                                    # Action button (right side)
+                                    vbox:
+                                        xalign 1.0
+                                        yalign 0.5
+                                        
+                                        if skin.unlocked:
+                                            if skin_shop.is_equipped(skin.id):
+                                                textbutton "Equipped":
+                                                    style "shop_equipped_button"
+                                                    action NullAction()
+                                            else:
+                                                textbutton "Equip":
+                                                    style "shop_equip_button"
+                                                    action Function(skin_shop.equip_skin, skin.id)
                                         else:
-                                            textbutton "Equip":
-                                                style "shop_equip_button"
-                                                xalign 0.5
-                                                action Function(skin_shop.equip_skin, skin.id)
-                                    else:
-                                        if skin.can_purchase():
-                                            textbutton "🪙 [skin.price]":
-                                                style "shop_buy_button"
-                                                xalign 0.5
-                                                action Function(skin.purchase)
-                                        else:
-                                            textbutton "🪙 [skin.price]":
-                                                style "shop_locked_button"
-                                                xalign 0.5
-                                                action NullAction()
-            
-            # Footer with back button
-            hbox:
-                xalign 0.5
-                
-                textbutton "← Back to Menu":
-                    style "shop_back_button"
-                    action Return()
+                                            if skin.can_purchase():
+                                                textbutton "Buy":
+                                                    style "shop_buy_button"
+                                                    action Function(skin.purchase)
+                                            else:
+                                                textbutton "Locked":
+                                                    style "shop_locked_button"
+                                                    action NullAction()
 
 # ============================================
 # SHOP STYLES
