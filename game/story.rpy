@@ -393,6 +393,13 @@ label scene2_branch_a_library:
             "" "Khi chuẩn bị rời đi, một cuốn sách phát sáng màu tím xuất hiện trên giá."
             "" "Nó rung rinh, như thể đang mời gọi..."
             
+            scene bg library_aura
+            with dissolve
+            
+            show aoto at left
+            show chie at right
+            with dissolve
+            
             "" "{color=#9966ff}Ánh sáng huyền bí tỏa ra từ cuốn sách...{/color}"
             
             menu:
@@ -402,12 +409,18 @@ label scene2_branch_a_library:
                     "" "Minh không cưỡng lại được sự tò mò."
                     "" "Anh chạm tay vào cuốn sách..."
                     
-                    scene bg black
-                    with flash
-                    
                     play sound "audio/dark_consume.ogg"
                     
-                    "Cuốn sách hóa thành khói đen, nuốt chửng Minh!"
+                    scene bg library_blackhole
+                    with flash
+                    
+                    "" "Cuốn sách nổ tung thành một hố đen khổng lồ!"
+                    "" "Bóng tối cuộn xoáy, hút mọi thứ vào trong!"
+                    
+                    scene bg black
+                    with dissolve
+                    
+                    "" "Cuốn sách hóa thành khói đen, nuốt chửng Minh!"
                     
                     "LAN" "MINH! KHÔNG!!!"
                     

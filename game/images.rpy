@@ -1,26 +1,36 @@
 # Image definitions for Sự Phản Bội game
 
+# Transform to fit backgrounds to screen
+transform bg_fit:
+    fit "cover"
+    xalign 0.5
+    yalign 0.5
+
 # Background images for scenes
 # Scene 1: Club room at night (supernatural ritual setting)
-image bg club night = "images/backgrounds/bg club night .png"
-image bg club_room = "images/Noraneko_Backgrounds_Pack_2/bg bedroom night dark.png"
+image bg club night = Transform("images/backgrounds/scene1 normal door.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg club_room = Transform("images/backgrounds/scene1 blood door.jpg", fit="cover", xalign=0.5, yalign=0.5)
 
 # Scene 2: Haunted school corridors and rooms
-image bg old_corridor = "images/Noraneko_Backgrounds_Pack_2/bg school hallway day.png"
-image bg library = "images/Noraneko_Backgrounds_Old/bg old school.png"
-image bg archive_room = "images/Noraneko_Backgrounds_Pack_2/bg classroom day.png"
+image bg old_corridor = Transform("images/backgrounds/scene2 old corridor.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg library = Transform("images/backgrounds/scene2 libraryNoBookAura.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg library_aura = Transform("images/backgrounds/scene2 libraryBookAura.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg library_blackhole = Transform("images/backgrounds/scene2 library blackhole.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg archive_room = Transform("images/backgrounds/scene2 storage room.png", fit="cover", xalign=0.5, yalign=0.5)
 
 # Scene 3: Chemistry room (dark, ominous)
-image bg chemistry_room = "images/Noraneko_Backgrounds_Pack_2/bg livingroom dark.png"
+image bg chemistry_room = Transform("images/backgrounds/scene3.png", fit="cover", xalign=0.5, yalign=0.5)
 
 # Scene 4: Mirror hallway (eerie, reflective)
-image bg mirror_hallway = "images/Noraneko_Backgrounds_Pack_3/bg backstreet spring night.png"
+image bg mirror_hallway = Transform("images/backgrounds/scene4 normal mirror.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg mirror_broken = Transform("images/backgrounds/scene4 broken mirror.png", fit="cover", xalign=0.5, yalign=0.5)
 
 # Scene 5: Voting room (stark white room)
-image bg white_room = "images/Noraneko_Backgrounds_Pack_2/bg bedroom day.png"
+image bg white_room = Transform("images/backgrounds/scene5 blind box.png", fit="cover", xalign=0.5, yalign=0.5)
+image bg white_room_reveal = Transform("images/backgrounds/scene5 reveal box.png", fit="cover", xalign=0.5, yalign=0.5)
 
 # Scene 6 & Ending: Dawn/bright sky
-image bg dawn_sky = "images/Noraneko_Backgrounds_Pack_2/bg street summer stars.png"
+image bg dawn_sky = Transform("images/backgrounds/scene1 normal door.png", fit="cover", xalign=0.5, yalign=0.5)
 
 # Utility backgrounds
 image bg black = "#000000"
