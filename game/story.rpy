@@ -6,7 +6,7 @@
 # ============================================
 
 transform character_base:
-    zoom 0.7
+    zoom 0.88
     yalign 1.0
 
 transform left:
