@@ -14,6 +14,9 @@ default persistent.shop_equipped_skins = {}
 # ============================================
 # SHOP DATA STRUCTURES
 # ============================================
+transform character_base:
+    zoom 0.88
+    yalign 1.0
 
 init python:
     
@@ -263,88 +266,65 @@ screen skin_shop_screen():
             text "🪙" size 24 yalign 0.5
             text "[persistent.shop_coins]" size 22 color "#FFD700" yalign 0.5
     
-    # Main container - Split into 2 halves
-    hbox:
+    # Shop owner character - left center
+    add "images/Casual/shopper/shopper normal smile.png" at character_base xalign 0.2
+    
+    # Shop title - top center
+    vbox:
         xalign 0.5
+        ypos 30
+        spacing 15
+        
+        text "🛍️ Skin Shop" size 32 color "#FFFFFF" xalign 0.5
+        
+        # Category tabs
+        hbox:
+            xalign 0.5
+            spacing 8
+            
+            for cat in ["All", "Chie", "Nora"]:
+                textbutton cat:
+                    style "shop_tab_button"
+                    action SetVariable("shop_current_category", cat)
+                    selected shop_current_category == cat
+    
+    # Items List - right center
+    frame:
+        xalign 0.7
         yalign 0.55
-        spacing 40
+        xsize 500
+        ysize 600
+        background "#1a1a2e"
+        padding (20, 20)
         
-        # LEFT HALF - Shop Owner
-        frame:
-            xsize 450
-            ysize 550
-            background "#1a1a2e"
-            padding (20, 20)
+        vbox:
+            spacing 15
             
-            vbox:
-                xalign 0.5
-                yalign 0.5
-                spacing 20
-                
-                # Shop owner placeholder
-                frame:
-                    xsize 350
-                    ysize 400
-                    xalign 0.5
-                    background "#2d2d44"
-                    
-                    vbox:
-                        xalign 0.5
-                        yalign 0.5
-                        spacing 10
-                        
-                        text "🧑‍💼" size 120 xalign 0.5
-                        text "Shop Owner" size 24 color "#FFFFFF" xalign 0.5
-                
-                # Shop title
-                text "🛍️ Skin Shop" size 28 color "#FFFFFF" xalign 0.5
-                
-                # Category tabs
-                hbox:
-                    xalign 0.5
-                    spacing 8
-                    
-                    for cat in ["All", "Chie", "Nora"]:
-                        textbutton cat:
-                            style "shop_tab_button"
-                            action SetVariable("shop_current_category", cat)
-                            selected shop_current_category == cat
-        
-        # RIGHT HALF - Items List
-        frame:
-            xsize 450
-            ysize 550
-            background "#1a1a2e"
-            padding (20, 20)
+            # Title
+            text "Available Items" size 24 color "#FFFFFF" xalign 0.5
             
-            vbox:
-                spacing 15
+            # Separator
+            add Solid("#444444") xsize 460 ysize 2 xalign 0.5
+            
+            null height 5
+            
+            # Items list with scrollbar - 2 skins per row
+            viewport:
+                scrollbars "vertical"
+                mousewheel True
+                xfill True
+                ysize 510
                 
-                # Title
-                text "Available Items" size 22 color "#FFFFFF" xalign 0.5
-                
-                # Separator
-                add Solid("#444444") xsize 410 ysize 2 xalign 0.5
-                
-                null height 5
-                
-                # Items list with scrollbar - 2 skins per row
-                viewport:
-                    scrollbars "vertical"
-                    mousewheel True
-                    xfill True
-                    ysize 460
+                vbox:
+                    spacing 15
+                    xalign 0.5
                     
-                    vbox:
-                        spacing 15
-                        xalign 0.5
-                        
-                        python:
-                            current_skins = skin_shop.get_skins_by_category(shop_current_category)
-                            # Split into rows of 2
-                            skin_rows = [current_skins[i:i+2] for i in range(0, len(current_skins), 2)]
-                        
-                        for row in skin_rows:
+                    python:
+                        current_skins = skin_shop.get_skins_by_category(shop_current_category)
+                        # Split into rows of 2
+                        skin_rows = [current_skins[i:i+2] for i in range(0, len(current_skins), 2)]
+                    
+                    for row in skin_rows:
                             hbox:
                                 spacing 20
                                 xalign 0.5
