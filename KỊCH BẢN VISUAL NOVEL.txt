@@ -9,7 +9,7 @@ o MAI: Nhạy cảm, hay lo lắng, mục tiêu của sự nghi ngờ .
 
 II. KỊCH BẢN CHI TIẾT
 CẢNH 1: LỜI MỜI GỌI
-BỐI CẢNH: Phòng sinh hoạt CLB Tâm linh. 11 giờ đêm. Ánh nến leo lét .
+BỐI CẢNH: Phòng sinh hoạt CLB Tâm linh. 11 giờ đêm. Ánh nến loe lét .
 (Bắt đầu) TUẤN: (Ngả người ra sau ghế) Tớ vẫn không tin được là chúng ta đang làm chuyện này. Nhỡ có con gì hiện ra thật thì sao? LAN: (Chỉnh kính) Thống kê cho thấy 99% các nghi thức gọi hồn chỉ là ảo giác nhóm. Cứ xem như trải nghiệm tâm lý đi. MAI: (Run rẩy) Nhưng... từ lúc vào đây tớ đã thấy lạnh sống lưng rồi. MINH: Thôi nào. Chỉ là đọc vài câu cho vui thôi. Để tớ đọc câu cuối cùng nhé.
 (Hành động) Minh đọc câu niệm chú. Nến tắt phụt. Một cơn đau buốt nhói lên trong đầu cả bốn người . Những lời thì thầm vang lên riêng biệt:
 * (Minh nghe): "Trong số các ngươi, có một kẻ đã bị chiếm xác."
@@ -20,7 +20,8 @@ Cánh cửa biến mất, thay bằng cổng sắt rỉ máu: "TRÒ CHƠI BẮT 
 
 CẢNH 2: MÊ CUNG MANH MỐI (CÓ DEAD END & LOGIC MỚI)
 BỐI CẢNH: Hành lang trường học cũ nát, ẩm mốc .
-LAN: Chúng ta cần thông tin. Nếu có kẻ mạo danh, phải có manh mối. TUẤN: Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế.
+LAN: Chúng ta cần thông tin. Nếu có kẻ mạo danh, phải có manh mối. 
+TUẤN: Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế.
 LỰA CHỌN CỦA MINH:
 * Lựa chọn A (Nguy hiểm): "Được. Chia ra hành động." (Dẫn đến Nhánh A)
 * Lựa chọn B (An toàn): "Không! Đi cùng nhau." (Dẫn đến Nhánh B)
@@ -28,13 +29,16 @@ NHÁNH A: CHIA NHÓM (THƯ VIỆN)
 Minh và Lan tìm thấy trang nhật ký tố cáo Mai đang "diễn kịch" . Lan sợ hãi giục Minh rời đi .
 LỰA CHỌN TÌM KIẾM (MINH):
 * A1 (Tin ngay): Rời đi ngay. (Minh bỏ lỡ manh mối quan trọng) .
-* A2 (Nghi ngờ): Kiểm tra kỹ hơn. Minh tìm thấy mảnh giấy ẩn: "MỌI BẰNG CHỨNG ĐỀU LÀ GIẢ. TIN TƯỞNG NHAU LÀ LỐI THOÁT DUY NHẤT." (Key Item cho True Ending) .
+* A2 (Nghi ngờ): Kiểm tra kỹ hơn. Minh tìm thấy mảnh giấy ẩn: 
+"MỌI BẰNG CHỨNG ĐỀU LÀ GIẢ. TIN TƯỞNG NHAU LÀ LỐI THOÁT DUY NHẤT." (Key Item cho True Ending) .
 (Sự kiện mới: Bẫy Dead End) Chuẩn bị rời đi, một cuốn sách phát sáng màu tím hiện ra mời gọi. LỰA CHỌN SỐNG CÒN:
 * S1 (Tham lam): "Đợi đã, cuốn sách kia phát sáng!" -> Minh chạm vào, sách hóa thành khói đen nuốt chửng anh.
 o -> BAD END 1: KẺ LẠC LỐI (GAME OVER).
 * S2 (Cẩn trọng): "Đi thôi, tớ có cảm giác không lành." -> Cả hai thoát an toàn.
 NHÁNH B: ĐI CHUNG (PHÒNG LƯU TRỮ - LOGIC MỚI)
-BỐI CẢNH: Phòng Lưu Trữ CLB. Cả nhóm đang hoảng loạn vì căn phòng rung chuyển, trần nhà bắt đầu nứt ra. Hồn ma tay sai cười man rợ rồi biến mất. Trên bàn làm việc lộn xộn, có hai tài liệu nổi bật nhất. Minh chỉ có thể cầm MỘT thứ trước khi chạy ra cửa.
+BỐI CẢNH: Phòng Lưu Trữ CLB. Cả nhóm đang hoảng loạn vì căn phòng rung chuyển, 
+trần nhà bắt đầu nứt ra. Hồn ma tay sai cười man rợ rồi biến mất. Trên bàn làm việc lộn xộn, 
+có hai tài liệu nổi bật nhất. Minh chỉ có thể cầm MỘT thứ trước khi chạy ra cửa.
 1. CUỐN NHẬT KÝ BÌA ĐỎ (BẪY CẢM XÚC):
 * Vẻ ngoài: Bìa da đỏ như máu, đang mở sẵn ở trang cuối. Nét chữ viết nguệch ngoạc đầy thù hận: "Đừng tin tụi nó! Tụi nó muốn mày chết!".
 * Sức hút: Đánh vào sự tò mò và nỗi sợ hãi tức thì của người chơi.
@@ -51,7 +55,10 @@ o NỘI DUNG: Đây là bản dịch luật chơi gốc mà Quản Trò đã c�
 o TÁC DỤNG: Minh hiểu ra rằng sự đoàn kết không chỉ là tha thứ, mà là vũ khí duy nhất để lôi con quỷ ra và tiêu diệt nó. (Mở khóa True End).
 
 CẢNH 3: PHÒNG HÓA HỌC & SỰ HY SINH (MỚI)
-BỐI CẢNH: Cánh cửa duy nhất mở là "Phòng Hóa Học". Bên trong nồng nặc mùi axit. Một chiếc hộp kính chứa dung dịch sủi bọt và rết độc. Chìa khóa vàng nằm dưới đáy. Đồng hồ đếm ngược: 00:60s.
+BỐI CẢNH: Cánh cửa duy nhất mở là "Phòng Hóa Học". 
+Bên trong nồng nặc mùi axit. 
+Một chiếc hộp kính chứa dung dịch sủi bọt và rết độc.
+ Chìa khóa vàng nằm dưới đáy. Đồng hồ đếm ngược: 00:60s.
 QUẢN TRÒ: "Chọn vật hiến tế để lấy chìa khóa. Hết giờ, phòng sẽ bơm khí độc."
 DIỄN BIẾN: Cả nhóm hoảng loạn. Tuấn từ chối làm. Lan run rẩy. Thời gian sắp hết.
 LỰA CHỌN QUYẾT ĐỊNH (MINH):
@@ -64,7 +71,8 @@ o Người bị chỉ định buộc phải thò tay vào axit. Họ lấy đư�
 o Minh tự thò tay vào. Bàn tay bị thương nặng. Tăng uy tín, nhưng Mai thấy tội lỗi.
 
 CẢNH 4: HÀNH LANG SỰ THẬT (MỚI)
-BỐI CẢNH: Hành lang đầy gương. Hình ảnh phản chiếu đứng yên cười quỷ dị. QUẢN TRÒ: "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất. Nói dối gương sẽ vỡ."
+BỐI CẢNH: Hành lang đầy gương. Hình ảnh phản chiếu đứng yên cười quỷ dị. 
+QUẢN TRÒ: "Muốn đi tiếp, hãy thú nhận bí mật dơ bẩn nhất. Nói dối gương sẽ vỡ."
 DIỄN BIẾN:
 1. TUẤN: Thú nhận đã hãm hại Lan mất học bổng năm ngoái vì ghen tị.
 2. MAI: Thú nhận chỉ lợi dụng Tuấn để được bảo vệ chứ không hề thích cậu ta.
@@ -73,7 +81,8 @@ DIỄN BIẾN:
 
 CẢNH 5: CĂN PHÒNG BỎ PHIẾU
 BỐI CẢNH: Phòng trắng toát. Hòm phiếu ở giữa .
-QUẢN TRÒ: "Viết tên kẻ phản bội. 4 phiếu TRẮNG: Tất cả thắng. Có tên: Người nhiều phiếu nhất sẽ chết, 3 người kia về."
+QUẢN TRÒ: "Viết tên kẻ phản bội. 4 
+phiếu TRẮNG: Tất cả thắng. Có tên: Người nhiều phiếu nhất sẽ chết, 3 người kia về."
 DIỄN BIẾN: Tuấn và Lan (với vết thương tâm lý từ Cảnh 4) đòi giết Mai để bảo toàn tính mạng .
 LỰA CHỌN QUYẾT ĐỊNH (MINH):
 * Lựa chọn A (Phản Bội): Đồng ý viết tên Mai.
@@ -83,7 +92,8 @@ o Thuyết phục thất bại: -> Dẫn đến KẾT THÚC B hoặc C.
 o Thuyết phục thành công: Cả 4 nộp giấy trắng. -> Dẫn đến CẢNH 6.
 
 CẢNH 6: ĐỐI MẶT ÁC QUỶ (TRUE ENDING ROUTE)
-BỐI CẢNH: Hòm phiếu mở ra: 4 tờ giấy trắng . Nhưng thay vì thắng, căn phòng rung chuyển. Máu chảy từ trần nhà.
+BỐI CẢNH: Hòm phiếu mở ra: 4 tờ giấy trắng . 
+Nhưng thay vì thắng, căn phòng rung chuyển. Máu chảy từ trần nhà.
 QUẢN TRÒ: (Gầm lên) "Lũ ngu ngốc! Giấy trắng nghĩa là không tìm ra ai. TẤT CẢ PHẠM LUẬT! CHẾT ĐI!"
 HÀNH ĐỘNG (KIỂM TRA MANH MỐI): Minh cần Key Item từ Cảnh 2 (Mảnh giấy "Bằng chứng giả" hoặc "Danh sách thành viên").
 * TRƯỜNG HỢP 1: KHÔNG CÓ MANH MỐI (Do chọn sai ở Cảnh 2):
