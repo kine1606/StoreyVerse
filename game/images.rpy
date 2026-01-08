@@ -139,7 +139,7 @@ image nora closed frown = ConditionSwitch(
 
 # Special effects
 image gamemaster = "#ff0000"  # Placeholder for gamemaster sprite
-image ghost_minion = "#660000"  # Placeholder for ghost sprite
+image ghost_minion = "images/Casual/ghost.png"  # Placeholder for ghost sprite
 
 # Timer display
 image timer = Text("00:60", size=40, color="#ff0000")

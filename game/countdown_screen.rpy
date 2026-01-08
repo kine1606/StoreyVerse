@@ -66,21 +66,44 @@ screen timed_choice_scene3(timeout_seconds):
         yalign 0.5
         spacing 15
         
-        textbutton "{color=#888888}\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"{/color}":
+        textbutton "{color=#ffffff}\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"{/color}":
             action [SetVariable("_timed_choice_result", "hesitate"), Return()]
             xalign 0.5
-            
-        textbutton "{color=#ff8866}Chỉ định Tuấn làm{/color}":
+            background "#00000066"
+            hover_background "#ff886688"
+
+            padding (20, 10)
+            xsize 800
+            text_xalign 0.5
+
+        textbutton "{color=#ffffff}Chỉ định Tuấn làm{/color}":
             action [SetVariable("_timed_choice_result", "tuan"), Return()]
             xalign 0.5
+            background "#00000066"
+            hover_background "#ff886688"
+            padding (20, 10)
+            xsize 800
+            text_xalign 0.5
             
-        textbutton "{color=#ff8866}Chỉ định Lan làm{/color}":
+        textbutton "{color=#ffffff}Chỉ định Lan làm{/color}":
             action [SetVariable("_timed_choice_result", "lan"), Return()]
             xalign 0.5
-            
-        textbutton "{color=#66ff66}\"Để tớ làm.\"{/color}":
+            background "#00000066"
+            hover_background "#ff886688"
+            padding (20, 10)
+            xsize 800
+            text_xalign 0.5
+
+
+        textbutton "{color=#ffffff}\"Để tớ làm.\"{/color}":
             action [SetVariable("_timed_choice_result", "minh"), Return()]
             xalign 0.5
+            background "#08070766"
+            hover_background "#ff886688"
+            padding (20, 10)
+            xsize 800
+            text_xalign 0.5
+
 
 # Alternative animated countdown timer with better visuals
 screen countdown_timer_fancy(start_time):
