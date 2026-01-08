@@ -101,9 +101,6 @@ label door_chapter_transition:
 # ============================================
 
 label door_quick_transition:
-    """
-    A faster version for more frequent transitions
-    """
     
     # Quick fade to black
     scene bg black

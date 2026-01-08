@@ -9,13 +9,14 @@ transform character_base:
     zoom 0.88
     yalign 1.0
 
+# For 2 characters - closer together for better UX
 transform left:
     character_base
-    xalign 0.15
+    xalign 0.25
 
 transform right:
     character_base
-    xalign 0.85
+    xalign 0.75
 
 transform center:
     character_base
@@ -45,6 +46,11 @@ transform pos3:
 transform pos4:
     character_base
     xalign 0.9
+
+transform text_shake:
+    linear 0.03 xoffset -5
+    linear 0.03 xoffset 5
+    repeat 4
 
 # ============================================
 # GAME INITIALIZATION & VARIABLES
@@ -89,7 +95,7 @@ init python:
             # Decreases when: Minh forces others to sacrifice, reads emotional bait
             # Used in: Scene 5 persuasion checks - determines if group listens to Minh
             self.authority = 5  # Start neutral
-    
+
     game_state = GameState()
 
 # ============================================
@@ -245,13 +251,13 @@ label start:
     "" "Khi ánh sáng trở lại, cánh cửa phòng đã biến mất."
     "" "Thay vào đó là một cổng sắt rỉ máu với dòng chữ khắc sâu:"
     
-    show text "{size=+20}{font=DejaVuSans.ttf}{color=#ff0000}TRÒ CHƠI BẮT ĐẦU\nTÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT{/color}{/size}" at truecenter
+    show text "{size=+20}{color=#ff0000}TRÒ CHƠI BẮT ĐẦU\nTÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT{/color}{/size}" at truecenter
     with dissolve
     pause 3.0
     hide text
     
     # Door transition to next chapter
-    # call door_chapter_transition
+    call door_quick_transition
     
     jump scene2_corridor
 
@@ -291,13 +297,13 @@ label scene2_corridor:
     with dissolve
     "TUẤN" "Chia ra sẽ nhanh hơn. Minh và Lan vào thư viện. Tôi trông Mai ở phòng y tế."
     
-    show chie frown
+    show chie frown at right
     "LAN" "Sao cậu lại muốn đi với Mai?"
     
-    show sora frown
+    show sora frown at left
     "TUẤN" "Cô ấy yếu nhất. Ai đó phải bảo vệ cô ấy."
     
-    show chie closed frown
+    show chie closed frown at right 
     "LAN" "Hay là cậu muốn giám sát cô ấy?"
     
     "" "Không khí bỗng trở nên căng thẳng."
@@ -353,12 +359,14 @@ label scene2_branch_a_library:
     "" "Lan nhặt cuốn sách lên, tay hơi run."
     
     "" "Đó là một trang nhật ký viết nguệch ngoạc:"
-    
-    show text "{i}\"Mai đang diễn kịch. Tôi biết. Cô ta không yếu đuối như vẻ bề ngoài.\"{/i}" at truecenter
+    show expression Solid("#0008") as overlay
+    show text """{size=+5} {i} {color=#FFF000}
+    Mai đang diễn kịch. Tôi biết. 
+    Cô ta không yếu đuối như vẻ bề ngoài.{/color}{/i}{/size}""" at truecenter
     with dissolve
     pause 3.0
     hide text
-    
+    hide overlay
     show chie open
     "LAN" "Thấy chưa? Đây là bằng chứng!"
     "LAN" "Mai đang lừa dối chúng ta! Đi thôi!"
@@ -373,7 +381,7 @@ label scene2_branch_a_library:
             $ game_state.group_trust_level -= 20
             $ game_state.trust -= 1  # A1: Believing too quickly reduces trust
             "" "Minh và Lan vội vã rời khỏi thư viện."
-            "" "Họ bỏ lỡ manh mối quan trọng..."
+            "" "{color=#9966ff}\Họ bỏ lỡ manh mối quan trọng..."
             jump scene2_reunite
             
         "Kiểm tra kỹ hơn {color=#66aaff}(Cẩn thận){/color}":
@@ -383,15 +391,16 @@ label scene2_branch_a_library:
             
             "" "Minh lật lại trang nhật ký, phát hiện một mảnh giấy nhỏ kẹp bên trong:"
             
-            show text "{color=#00ff00}\"MỌI BẰNG CHỨNG ĐỀU LÀ GIẢ.\nTIN TƯỞNG NHAU LÀ LỐI THOÁT DUY NHẤT.\"{/color}" at truecenter
+            show expression Solid("#0008") as overlay
+            show text "{size=+5}{color=#ffffff}\"Mọi bằng chứng là {color=#e34250}giả. \n{color=#ffffff}Tin tưởng là lối thoát duy nhất.\"{/color}" at truecenter
             with dissolve
             pause 4.0
             hide text
-            
+            hide expression overlay
             $ game_state.has_fake_evidence_note = True
             
             play sound "audio/item_get.ogg"
-            centered "{color=#00ff00}\[Đã nhận: Mảnh giấy 'Bằng chứng giả']{/color}"
+            centered """{color=#ffffff}\Đã nhận: \n {color=#00ff00}\Mảnh giấy 'Bằng chứng giả'{/color}"""
             
             "MINH" "Tớ hiểu rồi... Tất cả chỉ là bẫy để chia rẽ chúng ta."
             
@@ -400,10 +409,9 @@ label scene2_branch_a_library:
             "" "Nó rung rinh, như thể đang mời gọi..."
             
             scene bg library_aura
-            with dissolve
             
             show aoto at left
-            show chie at right
+            show chie at pos4
             with dissolve
             
             "" "{color=#9966ff}Ánh sáng huyền bí tỏa ra từ cuốn sách...{/color}"
@@ -450,10 +458,10 @@ label scene2_branch_b_archive:
     scene bg archive_room
     with fade
     
-    show aoto at left
-    show chie at left_center
-    show sora at right_center
-    show nora at right
+    show aoto at pos1
+    show chie at pos2
+    show sora at pos3
+    show nora at pos4
     with dissolve
     
     "" "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
@@ -553,7 +561,7 @@ label scene2_branch_b_archive:
             hide text
             
             play sound "audio/revelation.ogg"
-            centered "{color=#00ff00}[Đã nhận: Bản dịch Luật Chơi Gốc]{/color}"
+            centered "{color=#00ff00}Đã nhận: Bản dịch Luật Chơi Gốc{/color}"
             
             "MINH" "Tớ hiểu rồi... Sự đoàn kết không chỉ giúp ta sống sót..."
             "MINH" "...mà còn là vũ khí để tiêu diệt con quỷ!"
@@ -602,7 +610,7 @@ label scene2_reunite:
         "MINH" "Không có gì đáng tin cả. Đi tiếp thôi."
     
     # Door transition to next chapter
-    call door_chapter_transition
+    call door_quick_transition
     
     jump scene3_chemistry
 
@@ -646,12 +654,12 @@ label scene3_chemistry:
     
     play music "audio/tension.ogg"
     
-    $ countdown_time = 60
+    $ countdown_time = 30
     show screen countdown_timer(countdown_time)
     
-    "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Chọn vật hiến tế để lấy chìa khóa.{/size}"
-    "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Hết giờ, phòng sẽ bơm khí độc.{/size}"
-    "GIỌNG NÓI QUẢN TRÒ" "{size=+10}/Thời gian: 60 GIÂY.{/size}"
+    "Giọng nói bí ẩn" "{size=+5}Chọn vật hiến tế để lấy chìa khóa.{/size}"
+    "Giọng nói bí ẩn" "{size=+5}Hết giờ, phòng sẽ bơm khí độc.{/size}"
+    "Giọng nói bí ẩn" "{size=+5}Thời gian: 30 GIÂY.{/size}"
     
     show sora closed frown
     "TUẤN" "Cái quái gì vậy?! Ai dám thò tay vào đống axit đó?!"
@@ -674,7 +682,7 @@ label scene3_chemistry:
     show chie frown
     "LAN" "Tuấn, bình tĩnh đi!"
     
-    "" "Đồng hồ đếm ngược. 45 giây... 40 giây..."
+    "" "Đồng hồ đếm ngược. 15 giây... 10 giây..."
     "" "Không khí căng thẳng đến nghẹt thở."
     
     "" "{i}{color=#ffaa00}Thời gian đang cạn kiệt... Minh phải quyết định ngay!{/color}{/i}"
@@ -693,8 +701,9 @@ label scene3_chemistry:
             
             play sound "audio/timer_end.ogg"
             
-            "KHÔNG!!!"
-            
+            "" "{size=+30}{color=#fc2336}KHÔNG!!!"
+            pause(1.5)
+
             scene bg black
             with flash
             
@@ -989,7 +998,7 @@ label scene4_truth_hallway:
         "" "Họ hiểu nhau hơn... và cũng tha thứ hơn."
     
     # Door transition to next chapter
-    call door_chapter_transition
+    call door_quick_transition
     
     jump scene5_voting_room
 
@@ -1177,7 +1186,7 @@ label persuasion_success:
     "Cả bốn người cùng nộp tờ giấy trắng vào hòm phiếu."
     
     # Door transition to final chapter
-    call door_chapter_transition
+    call door_quick_transition
     
     jump scene6_confrontation
 
