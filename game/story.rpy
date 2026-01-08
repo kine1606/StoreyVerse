@@ -132,6 +132,9 @@ label start:
     show screen debug_stats
     show screen debug_toggle
     
+    # Play door opening video
+    call door_opening_transition
+    
     scene bg club night
     with fade
     
@@ -242,10 +245,13 @@ label start:
     "" "Khi ánh sáng trở lại, cánh cửa phòng đã biến mất."
     "" "Thay vào đó là một cổng sắt rỉ máu với dòng chữ khắc sâu:"
     
-    show text "{size=+20}{color=#ff0000}TRÒ CHƠI BẮT ĐẦU\nTÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT{/color}{/size}" at truecenter
+    show text "{size=+20}{font=DejaVuSans.ttf}{color=#ff0000}TRÒ CHƠI BẮT ĐẦU\nTÌM RA KẺ MẠO DANH ĐỂ SỐNG SÓT{/color}{/size}" at truecenter
     with dissolve
     pause 3.0
     hide text
+    
+    # Door transition to next chapter
+    # call door_chapter_transition
     
     jump scene2_corridor
 
@@ -595,6 +601,9 @@ label scene2_reunite:
     else:
         "MINH" "Không có gì đáng tin cả. Đi tiếp thôi."
     
+    # Door transition to next chapter
+    call door_chapter_transition
+    
     jump scene3_chemistry
 
 # ============================================
@@ -605,7 +614,7 @@ label scene3_chemistry:
     scene bg chemistry_room
     with fade
     
-    "Phòng Hóa Học"
+    # "Phòng Hóa Học"
     
     "" "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
     "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
@@ -810,7 +819,7 @@ label scene4_truth_hallway:
     scene bg mirror_hallway
     with fade
     
-    "Hành Lang Gương"
+    # "Hành Lang Gương"
     
     "" "Một hành lang dài đầy gương."
     "" "Hàng trăm chiếc gương xếp dọc hai bên tường."
@@ -978,6 +987,9 @@ label scene4_truth_hallway:
         $ game_state.group_trust_level += 20
         "" "Một cảm giác kỳ lạ lan toa trong nhóm."
         "" "Họ hiểu nhau hơn... và cũng tha thứ hơn."
+    
+    # Door transition to next chapter
+    call door_chapter_transition
     
     jump scene5_voting_room
 
@@ -1163,6 +1175,9 @@ label persuasion_success:
     play sound "audio/paper_write.ogg"
     
     "Cả bốn người cùng nộp tờ giấy trắng vào hòm phiếu."
+    
+    # Door transition to final chapter
+    call door_chapter_transition
     
     jump scene6_confrontation
 

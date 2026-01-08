@@ -143,3 +143,6 @@ image ghost_minion = "#660000"  # Placeholder for ghost sprite
 
 # Timer display
 image timer = Text("00:60", size=40, color="#ff0000")
+
+# Door opening/closing video
+image movie = Movie(play="images/OpenDoor.mov", size=(1920, 1080), loop=False)
