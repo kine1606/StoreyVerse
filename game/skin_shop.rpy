@@ -251,6 +251,8 @@ screen skin_shop_screen():
         if skin_shop is None:
             init_skin_shop()
     
+    on "show" action SetVariable("shop_owner_state", "welcome")
+    
     # Background
     add "images/backgrounds/shop.png" xysize (config.screen_width, config.screen_height)
     
@@ -283,21 +285,14 @@ screen skin_shop_screen():
     else:
         add "images/Casual/shopper/shopper normal smile.png" at character_base
     
-    # Shop owner speech bubble
-    frame:
-        xalign 0.18
-        yalign 0.35
-        background Frame("#FFFFFF", 10, 10)
-        padding (15, 10)
-        xmaximum 280
-        
-        if shop_owner_state == "success":
-            text "Thanks for supporting ( ˘͈ ᵕ ˘͈♡)" size 18 color "#333333" text_align 0.5
-        elif shop_owner_state == "no_money":
-            text "Nope! Your wallet says 'no coins' (¬_¬\")" size 18 color "#333333" text_align 0.5
-        else:
-            text "Welcome to mystery shop and I sell costumes (˵ •̀ ᴗ - ˵ ) ✧" size 18 color "#333333" text_align 0.5
-    
+    # Shop owner speech bubble using pre-made images
+    if shop_owner_state == "success":
+        add "images/backgrounds/shop/speech buy success.png" xalign 0.35 yalign 0.25
+    elif shop_owner_state == "no_money":
+        add "images/backgrounds/shop/speech buy fail.png" xalign 0.35 yalign 0.25
+    else:
+        add "images/backgrounds/shop/speech welcome.png" xalign 0.35 yalign 0.25
+
     # Shop title - top center
     vbox:
         xalign 0.5

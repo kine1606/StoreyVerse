@@ -1,0 +1,34 @@
+VIDEO CONVERSION INSTRUCTIONS
+================================
+
+Your OpenDoor.mov file needs to be converted to WebM or OGV format for better Ren'Py compatibility.
+
+METHOD 1 - Online Converter (Easiest):
+---------------------------------------
+1. Go to: https://cloudconvert.com/mov-to-webm
+2. Upload your OpenDoor.mov file from: game/images/OpenDoor.mov
+3. Convert to WebM format
+4. Download the converted file as OpenDoor.webm
+5. Place it in: game/images/OpenDoor.webm
+
+METHOD 2 - Using VLC Media Player:
+-----------------------------------
+1. Open VLC Media Player
+2. Media → Convert/Save
+3. Add your OpenDoor.mov file
+4. Click "Convert/Save"
+5. Choose Profile: "Video - VP8 + Vorbis (WebM)"
+6. Set destination: game/images/OpenDoor.webm
+7. Click Start
+
+METHOD 3 - Using FFmpeg (if installed):
+----------------------------------------
+Open command prompt in the game/images folder and run:
+ffmpeg -i OpenDoor.mov -c:v libvpx -crf 10 -b:v 2M -c:a libvorbis OpenDoor.webm
+
+AFTER CONVERSION:
+-----------------
+The code is already set up to use the video. Just make sure the file is named:
+game/images/OpenDoor.webm
+
+Then the door transitions will work automatically!
