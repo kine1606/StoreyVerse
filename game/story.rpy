@@ -142,6 +142,7 @@ screen debug_toggle():
 # ============================================
 
 label start:
+    # jump normal_end_b_cracked
     # Initialize game state
     $ game_state = GameState()
     
@@ -1475,14 +1476,14 @@ label normal_end_a_black_ink:
     scene bg club_room
     with fade
     
+    show expression Solid("#000000") as overlay
+    centered "{size=+10}GIỌT MỰC ĐEN{/size}"
     "" "Ba người còn lại tỉnh lại trong phòng CLB."
     "" "Họ sống sót."
     "" "Nhưng Mai không còn đó."
     
     play music "audio/meLancholic.ogg"
-    
-    show expression Solid("#000000") as overlay
-    centered "{size=+10}GIỌT MỰC ĐEN{/size}"
+
     
     pause 2.0
     
@@ -1517,13 +1518,8 @@ label normal_end_b_cracked:
     
     "Mai" "Minh! CỨU TỚ!!!"
     
-    "Nhưng đã quá muộn. Mai biến mất."
-    
-    scene bg club_room
-    with fade
-    
-    play music "audio/meLancholic.ogg"
-    
+    show text "{i}{color=#fa4c34}Nhưng đã quá muộn. Mai biến mất." at truecenter
+    pause(1.5)
     show expression Solid("#000000") as overlay
     centered "{size=+10}RẠN NỨT{/size}"
     

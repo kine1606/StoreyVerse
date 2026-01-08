@@ -31,7 +31,7 @@ image bg white_room_reveal = Transform("images/backgrounds/scene5 reveal box.png
 
 # Scene 6 & Ending: Dawn/bright sky
 image bg dawn_sky = Transform("images/backgrounds/scene1 normal door.png", fit="cover", xalign=0.5, yalign=0.5)
-
+image bg shop = Transform("images/backgrounds/shop.png", fit="cover", xalign=0.5, yalign=0.5)
 # Utility backgrounds
 image bg black = "#000000"
 image bg white = "#ffffff"

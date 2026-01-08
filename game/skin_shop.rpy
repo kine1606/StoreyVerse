@@ -17,7 +17,7 @@ default persistent.shop_equipped_skins = {}
 transform character_base:
     zoom 0.88
     yalign 1.0
-
+    xalign 1
 init python:
     
     class SkinItem:
@@ -227,6 +227,17 @@ init python:
 
 default shop_current_category = "All"
 default shop_selected_skin = None
+default shop_owner_state = "welcome"  # welcome, success, no_money
+
+init python:
+    def shop_try_purchase(skin):
+        """Try to purchase a skin and update shop owner state"""
+        global shop_owner_state
+        if skin.can_purchase():
+            skin.purchase()
+            store.shop_owner_state = "success"
+        else:
+            store.shop_owner_state = "no_money"
 
 # ============================================
 # SKIN SHOP SCREEN
@@ -234,17 +245,14 @@ default shop_selected_skin = None
 
 screen skin_shop_screen():
     tag menu
-    
+    # show bg shop
     # Ensure shop is initialized
     python:
         if skin_shop is None:
             init_skin_shop()
     
     # Background
-    add "gui/main_menu_background.png"
-    
-    # Dark overlay
-    add Solid("#000000CC")
+    add "images/backgrounds/shop.png" xysize (config.screen_width, config.screen_height)
     
     # Back button - Top Left
     textbutton "← Back":
@@ -258,16 +266,37 @@ screen skin_shop_screen():
         xalign 1.0
         ypos 20
         xoffset -20
-        background "#2d2d44"
+        background "#6FBC6E"
         padding (15, 10)
         
         hbox:
             spacing 10
             text "🪙" size 24 yalign 0.5
-            text "[persistent.shop_coins]" size 22 color "#FFD700" yalign 0.5
+            text "[persistent.shop_coins]" size 22 color "#FFFFFF" yalign 0.5
+            text "+" size 22 color "#FFFFFF" yalign 0.5
     
-    # Shop owner character - left center
-    add "images/Casual/shopper/shopper normal smile.png" at character_base xalign 0.2
+    # Shop owner character - left center with dynamic expression
+    if shop_owner_state == "success":
+        add "images/Casual/shopper/shopper sus smile.png" at character_base
+    elif shop_owner_state == "no_money":
+        add "images/Casual/shopper/shopper angry.png" at character_base
+    else:
+        add "images/Casual/shopper/shopper normal smile.png" at character_base
+    
+    # Shop owner speech bubble
+    frame:
+        xalign 0.18
+        yalign 0.35
+        background Frame("#FFFFFF", 10, 10)
+        padding (15, 10)
+        xmaximum 280
+        
+        if shop_owner_state == "success":
+            text "Thanks for supporting ( ˘͈ ᵕ ˘͈♡)" size 18 color "#333333" text_align 0.5
+        elif shop_owner_state == "no_money":
+            text "Nope! Your wallet says 'no coins' (¬_¬\")" size 18 color "#333333" text_align 0.5
+        else:
+            text "Welcome to mystery shop and I sell costumes (˵ •̀ ᴗ - ˵ ) ✧" size 18 color "#333333" text_align 0.5
     
     # Shop title - top center
     vbox:
@@ -275,14 +304,16 @@ screen skin_shop_screen():
         ypos 30
         spacing 15
         
-        text "🛍️ Skin Shop" size 32 color "#FFFFFF" xalign 0.5
+        text "Mystery shop" size 32 color "#EEEEEE" xalign 0.5
         
         # Category tabs
-        hbox:
-            xalign 0.5
+        vbox:
+            xpos 150
+            ypos 100
+            # xalign 0.5
             spacing 8
             
-            for cat in ["All", "Chie", "Nora"]:
+            for cat in ["All", "Aoto", "Sora", "Chie", "Nora"]:
                 textbutton cat:
                     style "shop_tab_button"
                     action SetVariable("shop_current_category", cat)
@@ -290,12 +321,12 @@ screen skin_shop_screen():
     
     # Items List - right center
     frame:
-        xalign 0.7
-        yalign 0.55
-        xsize 500
-        ysize 600
+        xalign 0.9
+        yalign 0.8
+        xsize 460
+        ysize 650
         background "#1a1a2e"
-        padding (20, 20)
+        padding (20, 15)
         
         vbox:
             spacing 15
@@ -335,7 +366,7 @@ screen skin_shop_screen():
                                         xsize 180
                                         ysize 280
                                         xalign 0.5
-                                        background "#2d2d44"
+                                        background "#FFE693"
                                         padding (10, 10)
                                         
                                         vbox:
@@ -347,35 +378,39 @@ screen skin_shop_screen():
                                                 xsize 160
                                                 ysize 180
                                                 xalign 0.5
-                                                background "#FFB6C1"  # Light pink
+                                                background "#FFC6E9"  # Light pink
                                                 
-                                                if skin.preview_image:
-                                                    # Crop the image to show only body (cut off head)
-                                                    # Crop(x, y, width, height) - start from y=300 to skip head
-                                                    add Crop((0, 300, 600, 700), skin.preview_image) xalign 0.5 yalign 0.5 zoom 0.25
-                                                else:
-                                                    text "👤" size 60 xalign 0.5 yalign 0.5 color "#333333"
+                                                fixed:
+                                                    xfit True
+                                                    yfit True
+                                                    
+                                                    if skin.preview_image:
+                                                        # Crop the image to show only body (cut off head)
+                                                        # Crop(x, y, width, height) - start from y=300 to skip head
+                                                        add Crop((0, 300, 600, 700), skin.preview_image):
+                                                            zoom 0.25
+                                                            anchor (0.5, 0.5)
+                                                            pos (110, 120)
+                                                    else:
+                                                        text "👤" size 60 xalign 0.5 yalign 0.5 color "#333333"
                                             
                                             # Skin name (middle)
-                                            text skin.name size 16 color "#FFFFFF" xalign 0.5 text_align 0.5
+                                            text skin.name size 16 color "#000000" xalign 0.5 text_align 0.5
                                             
                                             # Price (bottom)
                                             if skin.unlocked:
                                                 if skin_shop.is_equipped(skin.id):
-                                                    text "✓ Equipped" size 16 color "#22c55e" xalign 0.5
+                                                    text "✓ Equipped" size 16 color "#6FBC6E" xalign 0.5
                                                 else:
                                                     textbutton "Equip":
                                                         style "shop_card_button"
                                                         xalign 0.5
                                                         action Function(skin_shop.equip_skin, skin.id)
                                             else:
-                                                if skin.can_purchase():
-                                                    textbutton "🪙[skin.price]":
-                                                        style "shop_card_buy_button"
-                                                        xalign 0.5
-                                                        action Function(skin.purchase)
-                                                else:
-                                                    text "🪙[skin.price]" size 14 color "#9ca3af" xalign 0.5
+                                                textbutton "🪙[skin.price]":
+                                                    style "shop_card_buy_button"
+                                                    xalign 0.5
+                                                    action Function(shop_try_purchase, skin)
 
 # ============================================
 # SHOP STYLES
@@ -451,7 +486,7 @@ style shop_card_buy_button:
     background "#22c55e"
     hover_background "#16a34a"
     padding (8, 4)
-    xminimum 60
+    xminimum 150
 
 style shop_card_buy_button_text:
     size 10
@@ -459,8 +494,8 @@ style shop_card_buy_button_text:
     xalign 0.5
 
 style shop_back_button:
-    background "#4b5563"
-    hover_background "#6b7280"
+    background Frame("#6FBC6E", 20, 20)
+    hover_background Frame("#2fad2d", 20, 20)
     padding (30, 12)
 
 style shop_back_button_text:
