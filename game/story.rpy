@@ -22,6 +22,15 @@ transform center:
     character_base
     xalign 0.5
 
+# For 3-4 characters - wider spread
+transform left_far:
+    character_base
+    xalign 0.05
+
+transform right_far:
+    character_base
+    xalign 0.95
+
 transform left_center:
     character_base
     xalign 0.35
@@ -33,7 +42,7 @@ transform right_center:
 # For 4 characters spread evenly
 transform pos1:
     character_base
-    xalign 0.1
+    xalign 0.05
 
 transform pos2:
     character_base
@@ -45,7 +54,7 @@ transform pos3:
 
 transform pos4:
     character_base
-    xalign 0.9
+    xalign 0.95
 
 transform text_shake:
     linear 0.03 xoffset -5
@@ -458,10 +467,10 @@ label scene2_branch_b_archive:
     scene bg archive_room
     with fade
     
-    show aoto at pos1
-    show chie at pos2
-    show sora at pos3
-    show nora at pos4
+    show aoto at left_far
+    show chie at left_center
+    show sora at right_far
+    show nora at right_center
     with dissolve
     
     "" "Cả nhóm cùng nhau bước vào phòng lưu trữ CLB."
@@ -572,10 +581,10 @@ label scene2_reunite:
     scene bg old_corridor
     with fade
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     "" "Minh và Lan gặp lại Tuấn và Mai ở hành lang."
@@ -627,10 +636,10 @@ label scene3_chemistry:
     "" "Cánh cửa duy nhất mở ra dẫn vào phòng Hóa Học."
     "" "Mùi axit nồng nặc làm cả nhóm phải bịt mũi."
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     show chie frown
@@ -682,143 +691,151 @@ label scene3_chemistry:
     show chie frown
     "LAN" "Tuấn, bình tĩnh đi!"
     
-    "" "Đồng hồ đếm ngược. 15 giây... 10 giây..."
+    "" "Đồng hồ đếm ngược. 25 giây... 20 giây..."
     "" "Không khí căng thẳng đến nghẹt thở."
     
     "" "{i}{color=#ffaa00}Thời gian đang cạn kiệt... Minh phải quyết định ngay!{/color}{/i}"
     
-    menu:
-        "{color=#888888}\"Không! Tớ không thể ép ai cả! Tìm cách khác đi!\"{/color}":
-            $ game_state.group_trust_level -= 30
-            # A: Hesitating leads to death - no variables matter here
-            
-            "" "Minh do dự, không thể đưa ra quyết định."
-            "" "Thời gian trôi qua từng giây..."
-            
-            "" "30... 20... 10..."
-            
-            hide screen countdown_timer
-            
-            play sound "audio/timer_end.ogg"
-            
-            "" "{size=+30}{color=#fc2336}KHÔNG!!!"
-            pause(1.5)
+    # Hide the countdown display timer
+    hide screen countdown_timer
+    
+    # Initialize result variable and show timed choice screen
+    $ _timed_choice_result = None
+    call screen timed_choice_scene3(10)
+    $ result = _timed_choice_result
+    
+    # If player runs out of time, default to hesitation (death)
+    if result is None or result == "hesitate":
+        $ game_state.group_trust_level -= 30
+        # A: Hesitating leads to death - no variables matter here
+        
+        "" "Minh do dự, không thể đưa ra quyết định."
+        "" "Thời gian trôi qua từng giây..."
+        
+        "" "30... 20... 10..."
+        
+        hide screen countdown_timer
+        
+        play sound "audio/timer_end.ogg"
+        
+        "" "{size=+30}{color=#fc2336}KHÔNG!!!"
+        pause 1.5
 
-            scene bg black
-            with flash
-            
-            play sound "audio/gas.ogg"
-            
-            "Đồng hồ về 0."
-            "Cửa phòng khóa chặt."
-            "Khí gas độc phun ra từ các ống thông gió!"
-            
-            jump bad_end_2_gas_room
-            
-        "{color=#ff8866}Chỉ định Tuấn làm{/color}":
-            $ game_state.tuan_injury = True
-            $ game_state.group_trust_level -= 20
-            $ game_state.authority -= 2  # B: Assigning someone else reduces authority
-            
-            "MINH" "Tuấn... cậu là người mạnh nhất. Cậu phải làm việc này."
-            
-            "TUẤN" "CÁI GÌ?! Sao lại là tôi?!"
-            
-            "MINH" "Không còn thời gian! Nhanh lên!"
-            
-            "" "Tuấn nghiến răng, giận dữ nhìn Minh."
-            "" "Anh ta thò tay vào hộp kính..."
-            
-            play sound "audio/acid_burn.ogg"
-            
-            "TUẤN" "AAAAAHHHHH!!!"
-            
-            "" "Bàn tay Tuấn bị bỏng nặng bởi axit!"
-            "" "Nhưng anh ta đã lấy được chìa khóa."
-            
-            hide screen countdown_timer
-            
-            scene bg black
-            with fade
-            
-            "" "Cửa phòng mở ra. Nhóm thoát ra ngoài."
-            
-            "" "Tuấn băng bó vết thương, ánh mắt căm hận nhìn Minh."
-            "" "Hạt giống thù hận đã được gieo..."
-            
-            jump scene4_truth_hallway
-            
-        "{color=#ff8866}Chỉ định Lan làm{/color}":
-            $ game_state.lan_injury = True
-            $ game_state.group_trust_level -= 20
-            $ game_state.authority -= 2  # B: Assigning someone else reduces authority
-            
-            "MINH" "Lan, cậu có bàn tay khéo léo nhất. Cậu làm được."
-            
-            "LAN" "TẠI SAO?! Sao không phải Mai?!"
-            
-            "MINH" "Lan, nhanh lên! Chúng ta không còn thời gian!"
-            
-            "" "Lan run rẩy, nước mắt chảy dài."
-            "" "Cô thò tay vào hộp kính..."
-            
-            play sound "audio/acid_burn.ogg"
-            
-            "LAN" "AAAHHHH! ĐAU!!!"
-            
-            "" "Bàn tay Lan bị bỏng, da đỏ bừng."
-            "" "Nhưng cô đã lấy được chìa khóa."
-            
-            hide screen countdown_timer
-            
-            scene bg black
-            with fade
-            
-            "" "Cửa phòng mở. Nhóm chạy ra ngoài."
-            
-            "" "Lan khóc nức nở, nhìn Minh với ánh mắt oán hận."
-            
-            jump scene4_truth_hallway
-            
-        "{color=#66ff66}\"Để tớ làm.\"{/color}":
-            $ game_state.minh_injury = True
-            $ game_state.group_trust_level += 30
-            $ game_state.trust += 1  # C: Self-sacrifice increases trust
-            $ game_state.guilt += 1  # Mai feels guilty
-            
-            "MINH" "Tớ không thể bắt ai làm điều này. Để tớ."
-            
-            "MAI" "Minh! Không!"
-            
-            "TUẤN" "Này, đừng có liều lĩnh!"
-            
-            "MINH" "Đừng bàn nữa!"
-            
-            "" "Minh không do dự, thò tay vào hộp kính."
-            
-            play sound "audio/acid_burn.ogg"
-            
-            "MINH" "Ghhh...!"
-            
-            "" "Axit ăn vào da tay, đau như cắt!"
-            "" "Nhưng Minh cắn răng chịu đựng, túm lấy chìa khóa!"
-            
-            hide screen countdown_timer
-            
-            scene bg black
-            with fade
-            
-            "" "Cửa mở ra. Minh choáng váng, được Tuấn đỡ."
-            
-            "TUẤN" "Cậu... thật sự điên rồi."
-            
-            "LAN" "Nhưng... cám ơn cậu."
-            
-            "MAI" "Minh... Tớ xin lỗi... Tại tớ mà cậu..."
-            
-            "" "Niềm tin trong nhóm tăng lên đáng kể."
-            
-            jump scene4_truth_hallway
+        scene bg black
+        with flash
+        
+        play sound "audio/gas.ogg"
+        
+        "" "Đồng hồ về 0."
+        "" "Cửa phòng khóa chặt."
+        "" "Khí gas độc phun ra từ các ống thông gió!"
+        
+        jump bad_end_2_gas_room
+        
+    elif result == "tuan":
+        $ game_state.tuan_injury = True
+        $ game_state.group_trust_level -= 20
+        $ game_state.authority -= 2  # B: Assigning someone else reduces authority
+        
+        "MINH" "Tuấn... cậu là người mạnh nhất. Cậu phải làm việc này."
+        
+        "TUẤN" "CÁI GÌ?! Sao lại là tôi?!"
+        
+        "MINH" "Không còn thời gian! Nhanh lên!"
+        
+        "" "Tuấn nghiến răng, giận dữ nhìn Minh."
+        "" "Anh ta thò tay vào hộp kính..."
+        
+        play sound "audio/acid_burn.ogg"
+        
+        "TUẤN" "AAAAAHHHHH!!!"
+        
+        "" "Bàn tay Tuấn bị bỏng nặng bởi axit!"
+        "" "Nhưng anh ta đã lấy được chìa khóa."
+        
+        hide screen countdown_timer
+        
+        scene bg black
+        with fade
+        
+        "" "Cửa phòng mở ra. Nhóm thoát ra ngoài."
+        
+        "" "Tuấn băng bó vết thương, ánh mắt căm hận nhìn Minh."
+        "" "Hạt giống thù hận đã được gieo..."
+        
+        jump scene4_truth_hallway
+        
+    elif result == "lan":
+        $ game_state.lan_injury = True
+        $ game_state.group_trust_level -= 20
+        $ game_state.authority -= 2  # B: Assigning someone else reduces authority
+        
+        "MINH" "Lan, cậu có bàn tay khéo léo nhất. Cậu làm được."
+        
+        "LAN" "TẠI SAO?! Sao không phải Mai?!"
+        
+        "MINH" "Lan, nhanh lên! Chúng ta không còn thời gian!"
+        
+        "" "Lan run rẩy, nước mắt chảy dài."
+        "" "Cô thò tay vào hộp kính..."
+        
+        play sound "audio/acid_burn.ogg"
+        
+        "LAN" "AAAHHHH! ĐAU!!!"
+        
+        "" "Bàn tay Lan bị bỏng, da đỏ bừng."
+        "" "Nhưng cô đã lấy được chìa khóa."
+        
+        hide screen countdown_timer
+        
+        scene bg black
+        with fade
+        
+        "" "Cửa phòng mở. Nhóm chạy ra ngoài."
+        
+        "" "Lan khóc nức nở, nhìn Minh với ánh mắt oán hận."
+        
+        jump scene4_truth_hallway
+        
+    else:  # result == "minh"
+        $ game_state.minh_injury = True
+        $ game_state.group_trust_level += 30
+        $ game_state.trust += 1  # C: Self-sacrifice increases trust
+        $ game_state.guilt += 1  # Mai feels guilty
+        
+        "MINH" "Tớ không thể bắt ai làm điều này. Để tớ."
+        
+        "MAI" "Minh! Không!"
+        
+        "TUẤN" "Này, đừng có liều lĩnh!"
+        
+        "MINH" "Đừng bàn nữa!"
+        
+        "" "Minh không do dự, thò tay vào hộp kính."
+        
+        play sound "audio/acid_burn.ogg"
+        
+        "MINH" "Ghhh...!"
+        
+        "" "Axit ăn vào da tay, đau như cắt!"
+        "" "Nhưng Minh cắn răng chịu đựng, túm lấy chìa khóa!"
+        
+        hide screen countdown_timer
+        
+        scene bg black
+        with fade
+        
+        "" "Cửa mở ra. Minh choáng váng, được Tuấn đỡ."
+        
+        "TUẤN" "Cậu... thật sự điên rồi."
+        
+        "LAN" "Nhưng... cám ơn cậu."
+        
+        "MAI" "Minh... Tớ xin lỗi... Tại tớ mà cậu..."
+        
+        "" "Niềm tin trong nhóm tăng lên đáng kể."
+        
+        jump scene4_truth_hallway
 
 # ============================================
 # SCENE 4: HALLWAY OF TRUTH (HÀNH LANG SỰ THẬT)
@@ -834,10 +851,10 @@ label scene4_truth_hallway:
     "" "Hàng trăm chiếc gương xếp dọc hai bên tường."
     "" "Hình ảnh phản chiếu không cử động, chỉ đứng yên cười quỷ dị."
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     show nora closed frown
@@ -1016,10 +1033,10 @@ label scene5_voting_room:
     "" "Không có cửa sổ, không có bóng tối, không có góc khuất."
     "" "Chỉ có sự trắng tinh tối, bao quát mọi thứ."
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     "" "Giữa phòng là một chiếc hòm phiếu đen như mực."
@@ -1045,10 +1062,10 @@ label scene5_voting_room:
     
     scene bg white_room
     
-    show aoto frown at left
+    show aoto frown at left_far
     show chie frown at left_center
     show sora frown at right_center
-    show nora frown at right
+    show nora frown at right_far
     with dissolve
     
     "" "Không khí căng thẳng đến tột độ."
@@ -1217,10 +1234,10 @@ label persuasion_failure:
 label scene6_confrontation:
     scene bg white_room
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     play sound "audio/ballot_open.ogg"
@@ -1278,10 +1295,10 @@ label scene6_confrontation:
         jump bad_end_chaos
 
 label true_end_path_1:
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     "" "Bóng tối đang tiến lại gần."
@@ -1326,10 +1343,10 @@ label true_end_path_1:
     jump true_ending_dawn
 
 label true_end_path_2:
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     "" "Bóng tối đang tiến lại gần, sẵn sàng nuốt chửng mọi người."
@@ -1561,10 +1578,10 @@ label true_ending_dawn:
     scene bg club_room
     with fade
     
-    show aoto at left
+    show aoto at left_far
     show chie at left_center
     show sora at right_center
-    show nora at right
+    show nora at right_far
     with dissolve
     
     play music "audio/peaceful.ogg"
