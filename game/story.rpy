@@ -386,7 +386,7 @@ label scene2_branch_a_library:
     show aoto closed frown
     "" "{i}Minh cảm thấy có gì đó không đúng...{/i}"
     "" "{i}Tại sao cuốn sách lại tự rơi xuống đúng lúc họ vào?{/i}"
-    "" "{i}Quá tiện lợi. Quá... có dựng ý.{/i}"
+    "" "{i}Quá tiện lợi. Quá... có dụng ý.{/i}"
     
     menu:
         "Tin ngay và rời đi {color=#ff8866}(Vội vàng){/color}":

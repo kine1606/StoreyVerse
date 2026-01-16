@@ -7,17 +7,17 @@
 # PERSISTENT DATA (Saves across game sessions)
 # ============================================
 
-default persistent.shop_coins = 500
+default persistent.shop_coins = 1000
 default persistent.shop_unlocked_skins = ["chie_casual", "nora_casual"]
 default persistent.shop_equipped_skins = {}
 
 # ============================================
 # SHOP DATA STRUCTURES
 # ============================================
-transform character_base:
+transform shop_base:
     zoom 0.88
     yalign 1.0
-    xalign 1
+    xpos -50
 init python:
     
     class SkinItem:
@@ -227,7 +227,8 @@ init python:
 
 default shop_current_category = "All"
 default shop_selected_skin = None
-default shop_owner_state = "welcome"  # welcome, success, no_money
+default shop_owner_state = "welcome"  # welcome, success, no_money, equip_success
+default shop_preview_character = None  # Character to preview (Chie, Nora, etc.)
 
 init python:
     def shop_try_purchase(skin):
@@ -238,6 +239,42 @@ init python:
             store.shop_owner_state = "success"
         else:
             store.shop_owner_state = "no_money"
+        renpy.restart_interaction()
+    
+    def shop_equip_skin(skin_id):
+        """Equip a skin and show success message - does NOT close the screen"""
+        global shop_owner_state
+        if skin_shop.equip_skin(skin_id):
+            store.shop_owner_state = "equip_success"
+            renpy.notify("Equipped successfully!")
+            # Update preview to show the equipped skin
+            skin = skin_shop.get_skin(skin_id)
+            if skin:
+                store.shop_preview_character = skin.character
+            renpy.restart_interaction()
+        # Return None to prevent screen from closing
+        return None
+    
+    def get_character_preview_image(character):
+        """Get the preview image for a character with their equipped skin"""
+        if not character or character == "All":
+            return None
+        
+        # Get the equipped skin for this character
+        equipped_skin = skin_shop.get_equipped_skin(character)
+        
+        if equipped_skin and equipped_skin.preview_image:
+            return equipped_skin.preview_image
+        
+        # Default images if no skin equipped
+        default_images = {
+            "Chie": "images/Casual/chie/chie casual smile.png",
+            "Nora": "images/Casual/nora/nora casual smile.png",
+            "Aoto": "images/Casual/aoto/aoto casual glasses open blush.png",
+            "Sora": "images/Casual/sora/sora casual smile.png"
+        }
+        
+        return default_images.get(character)
 
 # ============================================
 # SKIN SHOP SCREEN
@@ -277,21 +314,41 @@ screen skin_shop_screen():
             text "[persistent.shop_coins]" size 22 color "#FFFFFF" yalign 0.5
             text "+" size 22 color "#FFFFFF" yalign 0.5
     
+    # Character preview - center of screen (shows selected character with equipped skin)
+    if shop_preview_character and shop_preview_character != "All":
+        python:
+            preview_img = get_character_preview_image(shop_preview_character)
+        
+        if preview_img:
+            add preview_img:
+                zoom 0.88
+                yalign 1.0
+                xalign 0.5
+    
     # Shop owner character - left center with dynamic expression
     if shop_owner_state == "success":
-        add "images/Casual/shopper/shopper sus smile.png" at character_base
+        add "images/Casual/shopper/shopper sus smile.png" at shop_base
     elif shop_owner_state == "no_money":
-        add "images/Casual/shopper/shopper angry.png" at character_base
+        add "images/Casual/shopper/shopper angry.png" at shop_base
+    elif shop_owner_state == "equip_success":
+        add "images/Casual/shopper/shopper sus smile.png" at shop_base
     else:
-        add "images/Casual/shopper/shopper normal smile.png" at character_base
+        add "images/Casual/shopper/shopper normal smile.png" at shop_base
     
     # Shop owner speech bubble using pre-made images
     if shop_owner_state == "success":
-        add "images/backgrounds/shop/speech buy success.png" xalign 0.35 yalign 0.25
+        add "images/backgrounds/shop/speech buy success.png"  yalign 0.2 xpos 250 zoom 0.88
     elif shop_owner_state == "no_money":
-        add "images/backgrounds/shop/speech buy fail.png" xalign 0.35 yalign 0.25
+        add "images/backgrounds/shop/speech buy fail.png" xpos 250 yalign 0.2 zoom 0.88
+    elif shop_owner_state == "equip_success":
+        frame:
+            xpos 250
+            yalign 0.2
+            background "#FFFFFF"
+            padding (20, 15)
+            text "Equipped successfully!" size 20 color "#000000"
     else:
-        add "images/backgrounds/shop/speech welcome.png" xalign 0.35 yalign 0.25
+        add "images/backgrounds/shop/speech welcome.png" xpos 250 yalign 0.2 zoom 0.88
 
     # Shop title - top center
     vbox:
@@ -303,20 +360,20 @@ screen skin_shop_screen():
         
         # Category tabs
         vbox:
-            xpos 150
-            ypos 100
+            xpos 250
+            ypos 15
             # xalign 0.5
             spacing 8
             
             for cat in ["All", "Aoto", "Sora", "Chie", "Nora"]:
                 textbutton cat:
                     style "shop_tab_button"
-                    action SetVariable("shop_current_category", cat)
+                    action [SetVariable("shop_current_category", cat), SetVariable("shop_preview_character", cat if cat != "All" else None)]
                     selected shop_current_category == cat
     
     # Items List - right center
     frame:
-        xalign 0.9
+        xalign 1.0
         yalign 0.8
         xsize 460
         ysize 650
@@ -400,12 +457,12 @@ screen skin_shop_screen():
                                                     textbutton "Equip":
                                                         style "shop_card_button"
                                                         xalign 0.5
-                                                        action Function(skin_shop.equip_skin, skin.id)
+                                                        action [Function(shop_equip_skin, skin.id), NullAction()]
                                             else:
                                                 textbutton "🪙[skin.price]":
                                                     style "shop_card_buy_button"
                                                     xalign 0.5
-                                                    action Function(shop_try_purchase, skin)
+                                                    action [Function(shop_try_purchase, skin), NullAction()]
 
 # ============================================
 # SHOP STYLES
